@@ -15,7 +15,7 @@ export default function SearchResults({ data }) {
 
 SearchResults.propTypes = {
   data: PropTypes.array({
-    recipe: PropTypes.object({
+    recipe: PropTypes.shape({
       title: PropTypes.string,
       image: PropTypes.string,
     }),
