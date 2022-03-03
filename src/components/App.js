@@ -7,7 +7,7 @@ function App() {
   const [SearchResults, setSearchResults] = useState([]);
 
   return (
-    <div className='App'>
+    <div className="App">
       <h1>Recipe App Project</h1>
       <SearchBar setSearchResults={setSearchResults} />
 
