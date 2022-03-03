@@ -2,5 +2,9 @@
 import React from "react";
 
 export default function RecipeInfo() {
-  return <div> Hello :) </div>;
+  return (
+    <div>
+      <h1>Recipe Info Component</h1>
+    </div>
+  );
 }

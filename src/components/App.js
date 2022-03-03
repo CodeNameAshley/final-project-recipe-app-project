@@ -6,8 +6,8 @@ import SearchResults from "./SearchResults";
 
 function App() {
   return (
-    <div className='App'>
-      <p>Recipe App Project</p>
+    <div className="App">
+      <h1>Recipe App Project</h1>
       <SearchBar />
       <SearchResults />
     </div>
