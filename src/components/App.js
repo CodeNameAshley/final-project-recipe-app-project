@@ -1,11 +1,13 @@
 /* eslint-disable */
-import React from "react";
+import React, { useState } from "react";
 import "../styles/App.css";
 import SearchBar from "./SearchBar";
 import SearchResults from "./SearchResults";
 import data from "../data/data.json"
 
 function App() {
+  const [SearchResults, setSearchResults] = useState([]);
+
   return (
     <div className="App">
       <h1>Recipe App Project</h1>
