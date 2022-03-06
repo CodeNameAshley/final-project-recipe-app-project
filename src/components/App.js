@@ -1,21 +1,19 @@
 /* eslint-disable */
 import React, { useState } from "react";
 import "../styles/App.css";
+import RecipeInfo from "./RecipeInfo";
 import SearchBar from "./SearchBar";
 import SearchResults from "./SearchResults";
-import GetRecipeList from "../requests/GetRecipeList";
-// import data from "../data/data.json"
+import NavBar from "./NavBar";
 
 function App() {
-  const [searchResults, setSearchResults] = useState([]);
-  console.log(searchResults);
-  console.log(setSearchResults);
+  const [searchResults, setSearchResults] = useState();
 
   return (
     <div className="App">
-      <h1>Recipe App Project</h1>
+      <NavBar />
       <SearchBar setSearchResults={setSearchResults} />
-      <SearchResults basicInfo={searchResults} />
+      {searchResults ? <SearchResults results={searchResults} /> : null}
     </div>
   );
 }
