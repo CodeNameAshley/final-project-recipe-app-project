@@ -3,16 +3,16 @@ import React, { useState } from "react";
 import "../styles/App.css";
 import SearchBar from "./SearchBar";
 import SearchResults from "./SearchResults";
-import data from "../data/data.json"
+import NavBar from "./NavBar";
 
 function App() {
-  const [SearchResults, setSearchResults] = useState([]);
+  const [searchResults, setSearchResults] = useState();
 
   return (
     <div className="App">
-      <h1>Recipe App Project</h1>
-      <SearchBar />
-      <SearchResults data = {data}/>
+      <NavBar />
+      <SearchBar setSearchResults={setSearchResults} />
+      {searchResults ? <SearchResults results={searchResults} /> : null}
     </div>
   );
 }
