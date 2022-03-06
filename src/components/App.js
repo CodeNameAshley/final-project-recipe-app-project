@@ -1,6 +1,7 @@
 /* eslint-disable */
 import React, { useState } from "react";
 import "../styles/App.css";
+import RecipeInfo from "./RecipeInfo";
 import SearchBar from "./SearchBar";
 import SearchResults from "./SearchResults";
 import NavBar from "./NavBar";
