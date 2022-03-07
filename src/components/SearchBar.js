@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 import GetRecipeList from "../requests/GetRecipeList";
 import "../sassstyles/searchbar.scss";
 import background from "../images/banner_image.png";
@@ -13,7 +14,7 @@ export default function SearchBar({ setSearchResults }) {
 
   return (
     <div className="searchBar">
-      <img src={background} className="searchBar-background" />
+      <img src={background} alt="food background" className="searchBar-background" />
       <form className="search-form" onSubmit={handleSubmit}>
         <input
           className="search-input"
@@ -27,4 +28,8 @@ export default function SearchBar({ setSearchResults }) {
       </form>
     </div>
   );
+}
+
+SearchBar.propTypes = {
+  setSearchResults: PropTypes.func.isRequired,
 };
