@@ -1,10 +1,19 @@
-/* eslint-disable */
-import React from "react";
+// /* eslint-disable */
+// import axios from "axios";
+// import { useState } from "react";
 
-export default function GetRecipeInfo() {
-  return (
-    <div>
-      <h1>Get Recipe Info Request Component</h1>
-    </div>
-  );
-}
+// export default async function GetRecipeInfo() {
+
+//   const [recipeID, setRecipeID] = useState();
+
+//     return axios
+//       .get(`https://api.spoonacular.com/recipes/${}/information?includeNutrition=false&includeInstructions=true`)
+//       .then((response) => {
+
+//         const fullRecipe = response;
+//         console.log(response)
+
+//         return fullRecipe;
+//       })
+
+// }

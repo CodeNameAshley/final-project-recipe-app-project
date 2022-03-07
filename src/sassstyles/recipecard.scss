@@ -1,0 +1,21 @@
+@import "./variables";
+
+.recipe-card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.recipe-card__title{
+    background: rgba(255, 255, 255, 0.7);
+    min-width: 60px;
+    border-radius: 20px;
+    font-family: $palanquin-dark;
+    margin-bottom: 5%;
+    width: 70%;
+}
+
+.recipe-card__image {
+    border-radius: 20px;
+    width: 90%;
+}

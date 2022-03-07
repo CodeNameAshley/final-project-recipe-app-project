@@ -1,23 +1,33 @@
 /* eslint-disable */
 import React from "react";
-import PropTypes from "prop-types";
+import PropTypes, { number } from "prop-types";
+import "../sassstyles/searchresults.scss";
+import RecipeCard from "./RecipeCard";
 
-export default function SearchResults({ data }) {
-  return data.map((recipe) => {
-    return (
-      <>
-        <div>{recipe.title}</div>
-        <div>{recipe.image}</div>
-      </>
-    );
-  });
+export default function SearchResults({ results }) {
+  return (
+    <div className="search-results__main">
+      <header className="search-results__header">
+        check out these recipes below!
+      </header>
+      <div className="search-results__card">
+        {results &&
+          results.map((recipe) => (
+            <>
+              <div>
+                <RecipeCard id={recipe.id}  title={recipe.title} image={recipe.image} />
+              </div>
+            </>
+          ))}
+      </div>
+    </div>
+  );
 }
 
 SearchResults.propTypes = {
-  data: PropTypes.array({
-    recipe: PropTypes.shape({
-      title: PropTypes.string,
-      image: PropTypes.string,
-    }),
+  recipe: PropTypes.shape({
+    id:PropTypes.number,
+    title: PropTypes.string,
+    image: PropTypes.string,
   }),
 };
