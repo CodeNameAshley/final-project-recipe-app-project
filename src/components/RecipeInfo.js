@@ -2,7 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 
 export default function RecipeInfo({ result }) {
-  console.log(result);
   const { image, title, instructions } = result;
 
   return (

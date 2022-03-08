@@ -1,6 +1,5 @@
-/* eslint-disable */
 import React from "react";
-import PropTypes, { number } from "prop-types";
+import PropTypes from "prop-types";
 import "../sassstyles/searchresults.scss";
 import RecipeCard from "./RecipeCard";
 
@@ -13,17 +12,13 @@ export default function SearchResults({ results, selectRecipe }) {
       <div className="search-results__card">
         {results &&
           results.map((recipe) => (
-            <>
-              <div>
-                <RecipeCard
-                  key={recipe.id}
-                  id={recipe.id}
-                  title={recipe.title}
-                  image={recipe.image}
-                  selectRecipe={selectRecipe}
-                />
-              </div>
-            </>
+            <RecipeCard
+              key={recipe.id}
+              id={recipe.id}
+              title={recipe.title}
+              image={recipe.image}
+              selectRecipe={selectRecipe}
+            />
           ))}
       </div>
     </div>
@@ -37,6 +32,6 @@ SearchResults.propTypes = {
       title: PropTypes.string,
       image: PropTypes.string,
     })
-  ),
+  ).isRequired,
   selectRecipe: PropTypes.func.isRequired,
 };
