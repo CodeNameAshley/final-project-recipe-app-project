@@ -15,11 +15,15 @@ $bold: 700px;
 $search-bar-div-width: auto;
 
 // Search Bar Input
-$search-bar-colour: rgb(182, 215, 190, 0.8);
+$search-bar-colour: rgb(255, 255, 255, 0.85);
 $search-bar-height: 90px;
 $search-bar-width: 60%;
 $search-border-radius: 50px;
-$search-bar-font-size: 20px;
+$search-bar-font-size: 30px;
+
+// Search Bar Button 
+$search-button-colour: rgba(182, 215, 190, 0.9);
+$search-button-text-colour: #2C6E49;
 
 // Logo Variables
 $logo-font-colour: #2C6E49;

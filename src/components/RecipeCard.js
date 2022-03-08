@@ -1,20 +1,46 @@
 import React from "react";
-import PropTypes from "prop-types";
+import PropTypes, { number } from "prop-types";
 import "../sassstyles/recipecard.scss";
+import { Link } from "react-router-dom";
+import axios from "axios";
 
-export default function RecipeCard(props) {
-  const { title, image } = props;
+export default function RecipeCard({ id, title, image, selectRecipe }) {
+  const recipeURL = `https://api.spoonacular.com/recipes/${id}/information?includeNutrition=false&includeInstructions=true&apiKey=6a3d81f73aae4b83983232ca23a0e9b1`;
+
+  const handleClick = (event) => {
+    event.preventDefault();
+    axios.get(`${recipeURL}`).then((response) => {
+      const details = {
+        title: response.data.title,
+        image: response.data.image,
+        instructions: response.data.instructions,
+      };
+      return selectRecipe(details);
+    });
+  };
+
   return (
-    <div className="recipe-card">
-      <div className="recipe-card__title">{title.toLowerCase()}</div>
-      <div>
-        <img className="recipe-card__image" src={image} alt="recipe" />
-      </div>
+    <div
+      className="recipe-card"
+      key={number.toString(id)}
+      onClick={handleClick}
+      onKeyPress={handleClick}
+      role="button"
+      tabIndex="0"
+    >
+      <Link to="/recipeinfo">
+        <div>
+          <img className="recipe-card__image" src={image} alt={title} />
+        </div>
+        <div className="recipe-card__title">{title.toLowerCase()}</div>
+      </Link>
     </div>
   );
 }
 
 RecipeCard.propTypes = {
+  id: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,
+  selectRecipe: PropTypes.func.isRequired,
 };

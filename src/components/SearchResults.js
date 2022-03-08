@@ -1,10 +1,9 @@
-/* eslint-disable */
 import React from "react";
 import PropTypes from "prop-types";
 import "../sassstyles/searchresults.scss";
 import RecipeCard from "./RecipeCard";
 
-export default function SearchResults({ results }) {
+export default function SearchResults({ results, selectRecipe }) {
   return (
     <div className="search-results__main">
       <header className="search-results__header">
@@ -13,11 +12,13 @@ export default function SearchResults({ results }) {
       <div className="search-results__card">
         {results &&
           results.map((recipe) => (
-            <>
-              <div>
-                <RecipeCard image={recipe.image} title={recipe.title} />
-              </div>
-            </>
+            <RecipeCard
+              key={recipe.id}
+              id={recipe.id}
+              title={recipe.title}
+              image={recipe.image}
+              selectRecipe={selectRecipe}
+            />
           ))}
       </div>
     </div>
@@ -25,8 +26,12 @@ export default function SearchResults({ results }) {
 }
 
 SearchResults.propTypes = {
-  recipe: PropTypes.shape({
-    title: PropTypes.string,
-    image: PropTypes.string,
-  }),
+  results: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      title: PropTypes.string,
+      image: PropTypes.string,
+    })
+  ).isRequired,
+  selectRecipe: PropTypes.func.isRequired,
 };

@@ -1,6 +1,4 @@
-/* eslint-disable */
 import axios from "axios";
-import React, { useState } from "react";
 
 export default async function GetRecipeList(query) {
   try {
@@ -14,6 +12,7 @@ export default async function GetRecipeList(query) {
       .then((response) => {
         const recipeResults = response.data.map((recipe) => {
           const basicInfo = {
+            id: recipe.id,
             title: recipe.title,
             image: recipe.image,
           };
