@@ -14,7 +14,11 @@ export default function SearchBar({ setSearchResults }) {
 
   return (
     <div className="searchBar">
-      <img src={background} alt="food background" className="searchBar-background" />
+      <img
+        src={background}
+        alt="food background"
+        className="searchBar-background"
+      />
       <form className="search-form" onSubmit={handleSubmit}>
         <input
           className="search-input"

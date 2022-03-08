@@ -23,7 +23,7 @@
     position: relative;
     height: auto;
     margin: 0 auto;
-    // padding-top: 120px;
+    padding-top: 120px;
 }
 
 .search-input{
@@ -49,19 +49,20 @@
 }
 
 ::placeholder{
-    color:$normal-font-colour;
+    color:rgb(44, 110, 73, 0.6);
     font-weight: $semi-bold-weight;
 }
 
 .submitButton {
-    background-color: white;
+    background-color: $search-button-colour;
 
     border: none;
     border-radius: $search-border-radius;
 
-    font-size: 15px;
-    font-weight: $semi-bold-weight;
-    color: $normal-font-colour;
+    font-family: $palanquin-dark;
+    font-size: 22.5px;
+    font-weight: $bold;
+    color: $search-button-text-colour;
     text-align: center;
 
     display: flex;

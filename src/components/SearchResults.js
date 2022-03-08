@@ -4,7 +4,7 @@ import PropTypes, { number } from "prop-types";
 import "../sassstyles/searchresults.scss";
 import RecipeCard from "./RecipeCard";
 
-export default function SearchResults({ results }) {
+export default function SearchResults({ results, selectRecipe }) {
   return (
     <div className="search-results__main">
       <header className="search-results__header">
@@ -15,7 +15,13 @@ export default function SearchResults({ results }) {
           results.map((recipe) => (
             <>
               <div>
-                <RecipeCard id={recipe.id}  title={recipe.title} image={recipe.image} />
+                <RecipeCard
+                  key={recipe.id}
+                  id={recipe.id}
+                  title={recipe.title}
+                  image={recipe.image}
+                  selectRecipe={selectRecipe}
+                />
               </div>
             </>
           ))}
@@ -25,9 +31,12 @@ export default function SearchResults({ results }) {
 }
 
 SearchResults.propTypes = {
-  recipe: PropTypes.shape({
-    id:PropTypes.number,
-    title: PropTypes.string,
-    image: PropTypes.string,
-  }),
+  results: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      title: PropTypes.string,
+      image: PropTypes.string,
+    })
+  ),
+  selectRecipe: PropTypes.func.isRequired,
 };

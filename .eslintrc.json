@@ -23,6 +23,7 @@
         "react"
     ],
     "rules": {
+    "react/jsx-wrap-multilines": [0],
     "quotes": [2, "double", { "avoidEscape": true }],
     "no-underscore-dangle": [0],
     "react/jsx-props-no-spreading": [0],

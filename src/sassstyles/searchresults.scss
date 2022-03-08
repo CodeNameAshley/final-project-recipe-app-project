@@ -14,39 +14,16 @@
 }
 
 .search-results__card{
-    column-count: 4;
-    
+    display: flex;
+    justify-content: center;
+    flex-flow: row wrap;
+    // flex-wrap: wrap;
+    // flex-grow: 1;
+    // grid-template-columns: auto auto auto;
 }
 
-// .search-results__image{
-//     border-radius: $search-border-radius;
-//     width: 100%;
-// }
 
-// .search-results__title{
-//     // margin-bottom: 10%;
-//     // padding: 10%;
-//     color: #2C6E49;
-//     font-size: 16px;
-//     font-weight: $medium-weight;
-//     font-family: $palanquin-dark;
-    
+.search-results__image{
+    border-radius: $search-border-radius;
+}
 
-//     // display: flex;
-//     // flex-direction: row;
-//     // align-items: center;
-//     // display: block;
-//     // position: absolute;
-//     // z-index: 999;
-//     // padding-left: 10px;
-//     // padding-right: 10px;
-
-   
-//     background-color: rgb(255, 255, 255, 0.5);
-
-    
-//     // max-height: 50%;
-//     // text-align: center;
-//     // justify-content: center;
-    
-// }
