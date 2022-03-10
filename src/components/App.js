@@ -7,7 +7,7 @@ import RecipeInfo from "./RecipeInfo";
 import NavBar from "./NavBar";
 
 function App() {
-  const [searchResults, setSearchResults] = useState([]);
+  const [searchResults, setSearchResults] = useState(null);
   const [selectedRecipe, setSelectedRecipe] = useState({
     title: "test title",
     image: "test image",
