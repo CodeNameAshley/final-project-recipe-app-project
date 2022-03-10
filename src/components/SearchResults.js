@@ -10,7 +10,9 @@ export default function SearchResults({ results, selectRecipe }) {
         check out these recipes below!
       </header>
       <div className="search-results__card">
-        {results &&
+        {results && results.length === 0 ? (
+          <p>No results found</p>
+        ) : (
           results.map((recipe) => (
             <RecipeCard
               key={recipe.id}
@@ -19,7 +21,8 @@ export default function SearchResults({ results, selectRecipe }) {
               image={recipe.image}
               selectRecipe={selectRecipe}
             />
-          ))}
+          ))
+        )}
       </div>
     </div>
   );
