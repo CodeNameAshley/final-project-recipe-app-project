@@ -23,6 +23,8 @@
         "react"
     ],
     "rules": {
+        "allowImplicit": [0],
+        "no-sequences": ["error", { "allowInParentheses": false }],
         "operator-linebreak": [0],
         "comma-dangle": ["error", "only-multiline"],
         "object-curly-newline": ["error", {

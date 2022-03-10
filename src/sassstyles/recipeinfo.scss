@@ -1,0 +1,48 @@
+@import "./variables";
+
+.recipe-info {
+    background: url("../images/chopping-board.jpg");
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: $palanquin-dark;
+
+}
+
+.recipe-info__details {
+    display: flex;
+    justify-content: center;
+    flex-flow: row wrap;
+    padding-top: 5%;
+}
+
+.recipe-info__title {
+    font-size: $recipeInfo-font-size;
+    color: $recipeInfo-font-colour;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    max-width: 556px ;
+    min-width: 370px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: $text-border-radius;
+    margin-right: 2.5%;
+}
+
+.recipe-info__image {
+    min-width: 370px;
+    max-width: 556px;
+}
+
+.recipe-info__header{
+    font-size: $recipeInfo-header-size;
+}
+
+.recipe-info__text {
+    font-size: 25px;
+    text-align: center;
+    padding-right: 10%;
+    padding-left: 10%;
+    padding-top: 2%
+}
