@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes, { number } from "prop-types";
-import "../sassstyles/recipecard.scss";
+import "../sass-styles/recipecard.scss";
 import { Link } from "react-router-dom";
 import axios from "axios";
 

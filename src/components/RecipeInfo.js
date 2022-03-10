@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "../sassstyles/recipeinfo.scss";
+import "../sass-styles/recipeinfo.scss";
 import NavBar from "./NavBar";
 
 export default function RecipeInfo({ result }) {
@@ -12,17 +12,19 @@ export default function RecipeInfo({ result }) {
   // const newInfo = structuredInstructions.split(".");
 
   return (
-    <div>
-      <NavBar />
-      <div>
-        <div className="recipe-info">
-          <div className="recipe-info__details">
-            <div className="recipe-info__title">{title.toLowerCase()}</div>
-            <img className="recipe-info__image" src={image} alt={title} />
-          </div>
-          <h1 className="recipe-info__header">follow these steps below</h1>
-          <div className="recipe-info__instructions">
-            <div className="recipe-info__text">{structuredInstructions}</div>
+    <div className="recipe-info">
+      <div className="recipe-info__background">
+        <NavBar />
+        <div>
+          <div>
+            <div className="recipe-info__details">
+              <div className="recipe-info__title">{title.toLowerCase()}</div>
+              <img className="recipe-info__image" src={image} alt={title} />
+            </div>
+            <h1 className="recipe-info__header">follow these steps below</h1>
+            <div className="recipe-info__instructions">
+              <div className="recipe-info__text">{structuredInstructions}</div>
+            </div>
           </div>
         </div>
       </div>

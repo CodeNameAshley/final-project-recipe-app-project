@@ -1,14 +1,20 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "../sassstyles/searchresults.scss";
+import "../sass-styles/searchresults.scss";
 import RecipeCard from "./RecipeCard";
 
 export default function SearchResults({ results, selectRecipe }) {
+  let headerMessage;
+
+  if (results.length < 5) {
+    headerMessage = "fancy trying something new?";
+  } else {
+    headerMessage = "check out these recipes below!";
+  }
+
   return (
     <div className="search-results__main">
-      <header className="search-results__header">
-        check out these recipes below!
-      </header>
+      <header className="search-results__header">{headerMessage}</header>
       <div className="search-results__card">
         {results &&
           results.map((recipe) => (

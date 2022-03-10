@@ -23,6 +23,8 @@
         "react"
     ],
     "rules": {
+        "treatUndefinedAsUnspecified": [0],
+        "no-unused-expressions": ["error", { "allowShortCircuit": true, "allowTernary": true }],
         "allowImplicit": [0],
         "no-sequences": ["error", { "allowInParentheses": false }],
         "operator-linebreak": [0],
