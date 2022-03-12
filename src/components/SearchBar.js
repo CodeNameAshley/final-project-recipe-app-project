@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import GetRecipeList from "../requests/GetRecipeList";
 import "../sassstyles/searchbar.scss";
+import "../styles/chips.css";
 import background from "../images/banner_image.png";
 
 export default function SearchBar({ setSearchResults }) {
@@ -12,14 +13,27 @@ export default function SearchBar({ setSearchResults }) {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    setSearchResults(await GetRecipeList(value));
+    if (ingredients.length >= 5) {
+      setSearchResults(await GetRecipeList(ingredients));
+    } else {
+      alert("min 5 ingredients");
+    }
   };
 
   const handleAddItem = () => {
     if (value) {
-      setIngredients([...ingredients, value]);
+      if (!ingredients.includes(value)) {
+        setIngredients([...ingredients, value]);
+      }
       setValue("");
     }
+  };
+
+  const handleDelete = (ingredient) => {
+    const oldArr = [...ingredients];
+    const Arr = oldArr.filter((item) => item !== ingredient);
+    console.log(Arr);
+    setIngredients(Arr);
   };
 
   console.log(ingredients);
@@ -30,15 +44,6 @@ export default function SearchBar({ setSearchResults }) {
         alt="food background"
         className="searchBar-background"
       />
-      <div>
-        <h1>chips</h1>
-        <div>
-          {
-          ingredients.map((ingredient) => <p>{ingredient}</p>)
-}
-
-        </div>
-      </div>
       <form className="search-form" onSubmit={handleSubmit}>
         <input
           className="search-input"
@@ -54,6 +59,17 @@ export default function SearchBar({ setSearchResults }) {
           Search
         </button>
       </form>
+      <span>
+        {
+          ingredients.map((ingredient) => <div className="chip" key={ingredient}>
+            {ingredient}
+&nbsp;
+            <button type="button" className="chip-delete" onClick={handleDelete}>
+              x
+            </button>
+          </div>)
+          }
+      </span>
     </div>
   );
 }
