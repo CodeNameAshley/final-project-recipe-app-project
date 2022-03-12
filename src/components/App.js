@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-
 import axios from "axios";
 import "../styles/App.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
@@ -18,27 +17,27 @@ function App() {
 
   const [randomRecipe, setRandomRecipe] = useState([]);
 
-  // useEffect(async () => {
-  //   try {
-  //     axios
-  //       .get(
-  //         "https://api.spoonacular.com/recipes/random?number=6&apiKey=d6a7928ebad041768568adf130dbde42"
-  //       )
-  //       .then((response) => {
-  //         const randomResults = response.data.recipes.map((recipe) => {
-  //           const basicInfo = {
-  //             id: recipe.id,
-  //             title: recipe.title,
-  //             image: recipe.image,
-  //           };
-  //           return basicInfo;
-  //         });
-  //         return setRandomRecipe(randomResults);
-  //       });
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // }, []);
+  useEffect(async () => {
+    try {
+      axios
+        .get(
+          "https://api.spoonacular.com/recipes/random?number=6&apiKey=d6a7928ebad041768568adf130dbde42"
+        )
+        .then((response) => {
+          const randomResults = response.data.recipes.map((recipe) => {
+            const basicInfo = {
+              id: recipe.id,
+              title: recipe.title,
+              image: recipe.image,
+            };
+            return basicInfo;
+          });
+          return setRandomRecipe(randomResults);
+        });
+    } catch (err) {
+      console.log(err);
+    }
+  }, []);
 
   return (
     <div className="App">

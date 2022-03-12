@@ -1,6 +1,6 @@
 @import "./variables";
 
-.searchBar{
+.search-bar__main{
     background: url("../images/banner_image.png");
     background-size: cover;
     display: flex;
@@ -14,8 +14,46 @@
     vertical-align: middle;
 }
 
-.search-form{
+.search-chip-div{
     padding: 100px;
+    font-family: $palanquin-dark;
+    font-size: 20px;
+}
+
+.chip__main{
+    display: inline-flex;
+    padding: 10px;
+}
+
+.chipButton{
+    background-color: $search-bar-colour;
+    display: inline-flex;
+    padding: 10px;
+    border-radius: 50px;
+    margin: 10px;
+    margin-bottom: 5px;
+}
+
+.chip__ingredient{
+    display: inline;
+    justify-content: center;
+    margin: 10px;
+    text-align: center;
+    color: $normal-font-colour;
+
+}
+
+.chip__delete{
+    font-family: $palanquin-dark;
+    font-weight: $semi-bold-weight;
+    font-size: 25px;
+    border: none;
+    border-radius: 50px;
+    height: 50px;
+    width: 50px;
+    background-color: $search-button-colour;
+    color: $search-button-text-colour;
+    text-align: center;
 }
 
 .search-input{
