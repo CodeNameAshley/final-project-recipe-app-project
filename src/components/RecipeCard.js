@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 
 export default function RecipeCard({ id, title, image, selectRecipe }) {
-  const recipeURL = `https://api.spoonacular.com/recipes/${id}/information?includeNutrition=false&includeInstructions=true&apiKey=6a3d81f73aae4b83983232ca23a0e9b1`;
+  const recipeURL = `https://api.spoonacular.com/recipes/${id}/information?includeNutrition=false&includeInstructions=true&apiKey=d6a7928ebad041768568adf130dbde42`;
 
   const handleClick = (event) => {
     event.preventDefault();

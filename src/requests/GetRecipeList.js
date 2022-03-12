@@ -5,21 +5,20 @@ export default async function GetRecipeList(query) {
     if (!query) {
       return Promise.resolve([]);
     }
-    return axios
+    axios
       .get(
-        `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${query}&ranking=2&number=6&apiKey=6a3d81f73aae4b83983232ca23a0e9b1`
+        `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${query}&ranking=2&number=6&apiKey=d6a7928ebad041768568adf130dbde42`
       )
       .then((response) => {
-        const recipeResults = response.data.filter((recipe) => {
-          if (recipe.image) {
-            const basicInfo = {
-              id: recipe.id,
-              title: recipe.title,
-              image: recipe.image,
-            };
-            return basicInfo;
-          }
+        const recipeResults = response.data.map((recipe) => {
+          const basicInfo = {
+            id: recipe.id,
+            title: recipe.title,
+            image: recipe.image,
+          };
+          return basicInfo;
         });
+        console.log(recipeResults);
         return recipeResults;
       });
   } catch (err) {

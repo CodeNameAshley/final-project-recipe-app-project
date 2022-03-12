@@ -8,6 +8,8 @@ export default function SearchResults({ results, selectRecipe }) {
 
   if (results.length < 5) {
     headerMessage = "fancy trying something new?";
+  } else if (results.length === 0) {
+    headerMessage = "Oh no there are no recipes in our cookbook!";
   } else {
     headerMessage = "check out these recipes below!";
   }

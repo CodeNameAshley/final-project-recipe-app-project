@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import GetRecipeList from "../requests/GetRecipeList";
 import "../sass-styles/searchbar.scss";
-import background from "../images/banner_image.png";
 
 export default function SearchBar({ setSearchResults }) {
   const [value, setValue] = useState();
@@ -14,11 +13,6 @@ export default function SearchBar({ setSearchResults }) {
 
   return (
     <div className="searchBar">
-      <img
-        src={background}
-        alt="food background"
-        className="searchBar-background"
-      />
       <form className="search-form" onSubmit={handleSubmit}>
         <input
           className="search-input"
