@@ -23,6 +23,7 @@
         "react"
     ],
     "rules": {
+        "no-bitwise": ["error", { "int32Hint": true }],
         "treatUndefinedAsUnspecified": [0],
         "no-unused-expressions": ["error", { "allowShortCircuit": true, "allowTernary": true }],
         "allowImplicit": [0],

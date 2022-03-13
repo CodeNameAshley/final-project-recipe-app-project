@@ -1,41 +1,60 @@
 @import "./variables";
 
-.recipe-card{
-    padding-left: 7.5px;
-    padding-right: 7.5px;
-    display: column;
+.recipe-card__main{
+    margin: 10px;
+    display: inline-flex;
     grid-template-columns: auto auto auto;
+}
+
+.recipe-card__image-info {
+    background-color: $recipeInfo-div-background;
+    border-radius: 20px;
+    padding: 5px;
+}
+
+.recipe-card__image {
+    border-radius: 20px;
+    max-height: 230px;
+    max-width: 330px;
 }
 
 .recipe-card__title{
     font-family: $palanquin-dark;
     color: #2C6E49;
-    font-size: 20px;
-    font-weight: $semi-bold-weight;
+    font-size: 25px;
+    font-weight: $bold;
 
     text-align: center;
     justify-content: center;
 
-    max-width: 312px;
+    max-width: 330px;
+
+    align-items: center;
+    display: block;
+    position: relative;
+    
+    margin: 10px;
+}
+
+
+.recipe-card__extra-info{
+    font-family: $palanquin-dark;
+    color: #2C6E49;
+    font-size: 20px;
+    font-weight: $normal-font-colour;
+
+    text-align: center;
+    justify-content: center;
+
+    max-width: 330px;
 
     align-items: center;
     display: block;
     position: relative;
     z-index: 999;
-    
-    margin-bottom: 10%;
-    margin-top: 2.5%;
-
-    
 }
 
 a:link {
     text-decoration: none;
 }
 
-
-.recipe-card__image {
-    border-radius: 20px;
-    max-height: 231px;
-    max-width: 312px;
-}

@@ -6,12 +6,13 @@ import SearchBar from "./SearchBar";
 import SearchResults from "./SearchResults";
 import RecipeInfo from "./RecipeInfo";
 import NavBar from "./NavBar";
+import ReplacementImage from "../images/replacement-image.png";
 
 function App() {
   const [searchResults, setSearchResults] = useState();
   const [selectedRecipe, setSelectedRecipe] = useState({
     title: "test title",
-    image: "test image",
+    image: ReplacementImage,
     instructions: "test instructions",
   });
 
@@ -21,7 +22,7 @@ function App() {
     try {
       axios
         .get(
-          "https://api.spoonacular.com/recipes/random?number=6&apiKey=d6a7928ebad041768568adf130dbde42"
+          `https://api.spoonacular.com/recipes/random?number=3&apiKey=${process.env.REACT_APP_API_KEY}`
         )
         .then((response) => {
           const randomResults = response.data.recipes.map((recipe) => {
@@ -29,6 +30,12 @@ function App() {
               id: recipe.id,
               title: recipe.title,
               image: recipe.image,
+              dairyFree: recipe.dairyFree,
+              glutenFree: recipe.glutenFree,
+              readyInMinutes: recipe.readyInMinutes,
+              pricePerServing: recipe.pricePerServing,
+              vegan: recipe.vegan,
+              vegetarian: recipe.vegetarian,
             };
             return basicInfo;
           });

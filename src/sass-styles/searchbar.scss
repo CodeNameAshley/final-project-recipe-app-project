@@ -4,7 +4,7 @@
     background: url("../images/banner_image.png");
     background-size: cover;
     display: flex;
-    position: sticky;
+    position: relative;
 
     width: $search-bar-div-width;
     font-family: $palanquin-dark;
@@ -19,32 +19,51 @@
     padding: 100px;
     font-family: $palanquin-dark;
     font-size: 20px;
+    
 }
 
-.chip__main{
-    display: inline-flex;
-    padding: 10px;
-}
+// .chip__main{
+//     display: inline-flex;
+//     padding: 10px;
+// }
 
 .chipButton{
     background-color: $search-bar-colour;
     display: inline-flex;
-    padding: 10px;
+    // padding: 10px;
     border-radius: 50px;
     margin: 10px;
     margin-bottom: 5px;
 }
 
+// .chip__index{
+//     font-family: $palanquin-dark;
+//     font-weight: $semi-bold-weight;
+//     font-size: 25px;
+//     border: none;
+//     border-radius: 50px;
+//     height: 50px;
+//     width: 50px;
+//     background-color: $search-button-colour;
+//     color: $search-button-text-colour;
+//     text-align: center;
+//     align-items: center;
+//     align-self: center;
+// }
+
 .chip__ingredient{
     display: inline;
     justify-content: center;
-    margin: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
     text-align: center;
     color: $normal-font-colour;
+    align-items: center;
+    align-self: center;
 
 }
 
-.chip__delete{
+.chip__delete, .chip__index{
     font-family: $palanquin-dark;
     font-weight: $semi-bold-weight;
     font-size: 25px;
@@ -55,23 +74,56 @@
     background-color: $search-button-colour;
     color: $search-button-text-colour;
     text-align: center;
+    align-items: center;
+    align-self: center;
 }
 
-.search-input{
+.search-bar__form-addButton{
     background-color: $search-bar-colour;
     border: none;
     border-radius: $search-border-radius;
+    outline: none;
+    display: inline-flex;
+    width: 70%;
+}
+
+.search-bar__add{
+    background-color: $search-button-colour;
+
+    border: none;
+    border-radius: $search-border-radius;
+
+    font-family: $palanquin-dark;
+    font-size: 22.5px;
+    font-weight: $bold;
+    color: $search-button-text-colour;
+    text-align: center;
+
+    width: 30%;
+    // padding: 5px;
+    // margin: auto;
+    height: 92px;
+
+    float: right;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.search-input{
+    background-color: transparent;
+    border: none;
+    // border-radius: $search-border-radius;
     outline: none;
 
     font-size: $search-bar-font-size;
     font-family: $palanquin-dark;
     font-style: normal;
-    width: 70%;
+    width: 90%;
     
     text-align: center;
     color: $normal-font-colour;
-
-    margin: auto;
+    margin-right: 20px;
     height: $search-bar-height;   
 }
 

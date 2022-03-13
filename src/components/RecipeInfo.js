@@ -5,11 +5,8 @@ import NavBar from "./NavBar";
 
 export default function RecipeInfo({ result }) {
   const { image, title, instructions } = result;
-  console.log(instructions);
-  // const regEx = /\r?\n/;
-  const structuredInstructions = instructions.replace(/(<([^>]+)>)/gi, "");
 
-  // const newInfo = structuredInstructions.split(".");
+  const structuredInstructions = instructions.replace(/(<([^>]+)>)/gi, "");
 
   return (
     <div className="recipe-info">
@@ -34,6 +31,7 @@ export default function RecipeInfo({ result }) {
 
 RecipeInfo.propTypes = {
   result: PropTypes.shape({
+    furtherInstructions: PropTypes.string,
     instructions: PropTypes.string,
     title: PropTypes.string,
     image: PropTypes.string,
