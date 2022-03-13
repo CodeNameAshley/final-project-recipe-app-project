@@ -9,7 +9,7 @@ import NavBar from "./NavBar";
 import ReplacementImage from "../images/replacement-image.png";
 
 function App() {
-  const [searchResults, setSearchResults] = useState();
+  const [searchResults, setSearchResults] = useState(null);
   const [selectedRecipe, setSelectedRecipe] = useState({
     title: "test title",
     image: ReplacementImage,
