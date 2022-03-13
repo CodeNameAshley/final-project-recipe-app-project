@@ -1,6 +1,6 @@
 <div align='center'>
   
-<img src='https://github.com/CodeNameAshley/recipe-app-project/blob/master/src/images/foodle.png'>
+<img src='https://github.com/CodeNameAshley/recipe-app-project/blob/master/src/images/foodle-logo.png'>
   
 </div>
 
