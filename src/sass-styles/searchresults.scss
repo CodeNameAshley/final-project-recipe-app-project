@@ -1,0 +1,26 @@
+@import "./variables";
+
+.search-results__main{
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.search-results__header{
+    color: $header-font-colour;
+    font-family: $palanquin-dark;
+    font-weight: $medium-weight;
+    font-size: $header-font-size;
+    padding: 20px;
+}
+
+.search-results__card{
+    display: flex;
+    justify-content: center;
+    flex-flow: row wrap;
+}
+
+
+.search-results__image{
+    border-radius: $search-border-radius;
+}
+

@@ -1,0 +1,51 @@
+// Google Fonts
+@import url('https://fonts.googleapis.com/css2?family=Palanquin+Dark:wght@400;500;600;700&display=swap');
+
+// Font Variables
+$palanquin-dark: 'Palanquin Dark', sans-serif;
+
+// Font Weights
+$regular-weight: 400;
+$medium-weight: 500;
+$semi-bold-weight: 600;
+$bold: 700;
+
+
+// Search Bar Div Variables
+$search-bar-div-width: auto;
+
+// Search Bar Input
+$search-bar-colour: rgb(255, 255, 255, 0.85);
+$search-bar-height: 90px;
+$search-bar-width: 60%;
+$search-border-radius: 50px;
+$search-bar-font-size: 30px;
+
+// Search Bar Button 
+$search-button-colour: rgba(182, 215, 190, 0.9);
+$search-button-text-colour: #2C6E49;
+
+// Logo Variables
+$logo-font-colour: #2C6E49;
+
+
+// Normal Font Variables
+$normal-font-colour: #2C6E49;
+
+// Header Variables
+$header-font-colour: #1A4301;
+$header-font-size: 30px;
+
+// All Image Borders
+$image-border-radius: 25px;
+$text-border-radius: 50px;
+
+// Recipe Info
+$recipeInfo-font-colour: #1A4301;
+$recipeInfo-header-colour: #2C6E49;
+$recipeInfo-font-size: 45px;
+$recipeInfo-header-size: 30px;
+$recipeInfo-div-background: rgba(255, 255, 255, 0.8);
+
+// NavBar
+$backButton-colour: #ADE2C8;
