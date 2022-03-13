@@ -4,6 +4,7 @@
     background: url("../images/banner_image.png");
     background-size: cover;
     display: flex;
+    position: sticky;
 
     width: $search-bar-div-width;
     font-family: $palanquin-dark;

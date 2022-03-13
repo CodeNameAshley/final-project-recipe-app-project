@@ -29,13 +29,11 @@ export default function SearchBar({ setSearchResults }) {
 
   const handleDelete = () => {
     const oldArr = [...ingredients];
+    // const Arr = oldArr.splice(-1, 1);
 
-    const Arr = oldArr.splice(-1, 1);
-    console.log(Arr);
-
-    setIngredients(oldArr);
+    setIngredients(oldArr.splice(-1, 1));
   };
-  console.log(ingredients);
+
   return (
     <div className="search-bar__main">
       <div className="search-chip-div">
