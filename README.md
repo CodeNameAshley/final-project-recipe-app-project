@@ -1,72 +1,80 @@
-# ONGOING PROJECT READ ME IS BEING UPDATED
+<div align='center'>
+  
+<img src='https://github.com/CodeNameAshley/recipe-app-project/blob/master/src/images/foodle.png'>
+  
+</div>
 
-# Getting Started with Create React App
+<br />
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+---
 
-## Available Scripts
+<div align="center">
 
-In the project directory, you can run:
+**[PROJECT PHILOSOPHY](https://github.com/chroline/recipe-app-project#-project-philosophy) • 
+[STEPS](https://github.com/chroline/recipe-app-project#-steps) • 
+[TECH STACK](https://github.com/chroline/recipe-app-project#-tech-stack) • 
+[CONTRIBUTERS](https://github.com/chroline/recipe-app-project#%EF%B8%8F-contributers) • 
+[CONTRIBUTING](https://github.com/chroline/recipe-app-project#-contributing) • 
+[LICENSE](https://github.com/chroline/recipe-app-project#%EF%B8%8F-license)**
 
-### `npm start`
+</div>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+<br />
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### foodle app is an on-going project! 
 
-### `npm test`
+- Web: coming soon 👀
+- iOS/macOS: in the works 🔧
+- Android: in the works 🔧
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+<br />
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+# 💡 Project philosophy
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+> Hungry and unsure of what to eat? Are the ingredients in your fridge stopping you from deciding what to cook? Don't let hunger 🙍‍♂️ turn into anger 😡! 
+> Use 'foodle' 🙌 
+>'foodle' lets you search for recipes based on the ingredients you have in your fridge! Simply type the ingredients in the search bar 🔍, scroll through the recipes 📜, click on a recipe for the instructions and start cooking 👩‍🍳!
+>'foodle', food made simple!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+# 🟢 Steps
 
-### `npm run eject`
+- We are just finishing the project and will update this once finished! 
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+# 👨‍💻 Tech stack
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Here's a brief high-level overview of the tech stack the foodle app uses:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- JavaScript
+- React.js
+- CSS
+- SASS
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+# 🧍 Contributers
 
-## Learn More
+- Khalid @Khalid4555
+- Eriq @eriqabonie
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+# ✍️ Contributing
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Interested in contributing to the foodle app project? Thanks so much for your interest! We are just in the process of finishing this app. Once finished we will be looking for improvements to the project and contributions from open-source developers are greatly appreciated.
+.
 
-### Code Splitting
+# 🌟 Spread the word!
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Thank you for checking this repo, once the project is finished we will let you know how you can support this app!
 
-### Analyzing the Bundle Size
+# ⚠️ License
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+foodle app is free and open-source software licensed under the GNU General Public License v3.0. All designs were created by Eriq Abonie, Khalid Nur, Ashley Lhuillier and distributed under Creative Commons license (CC BY-SA 4.0 International).
 
-### Making a Progressive Web App
+<br />
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+---
 
-### Advanced Configuration
+<br />
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+# 💛
 
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Reminder that *you are great, you are enough, and your presence is valued.* If you are struggling with your mental health, please reach out to someone you love and consult a professional. [There are many resources for you to get help in a time of need.](https://www.nimh.nih.gov/health/find-help)
