@@ -13,7 +13,7 @@
 **[PROJECT PHILOSOPHY](https://github.com/chroline/recipe-app-project#-project-philosophy) • 
 [STEPS](https://github.com/chroline/recipe-app-project#-steps) • 
 [TECH STACK](https://github.com/chroline/recipe-app-project#-tech-stack) • 
-[CONTRIBUTERS](https://github.com/chroline/recipe-app-project#%EF%B8%8F-contributers) • 
+[CONTRIBUTORS](https://github.com/chroline/recipe-app-project#%EF%B8%8F-contributors) • 
 [CONTRIBUTING](https://github.com/chroline/recipe-app-project#-contributing) • 
 [LICENSE](https://github.com/chroline/recipe-app-project#%EF%B8%8F-license)**
 
@@ -51,7 +51,7 @@ Here's a brief high-level overview of the tech stack the foodle app uses:
 - CSS
 - SASS
 
-# 🧍 Contributers
+# 🧍 Contributors
 
 - Khalid @Khalid4555
 - Eriq @eriqabonie
