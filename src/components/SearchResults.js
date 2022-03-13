@@ -13,11 +13,7 @@ export default function SearchResults({ results, selectRecipe }) {
       <header className="search-results__header">{headerMessage}</header>
       <div className="search-results__card">
         {results && results.length === 0 ? (
-<<<<<<< HEAD
           <p>{noResultsMessage}</p>
-=======
-          <p>No results found</p>
->>>>>>> origin/master
         ) : (
           results.map((recipe) => (
             <RecipeCard
