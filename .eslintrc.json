@@ -23,8 +23,8 @@
         "react"
     ],
     "rules": {
-        "arrow-body-style": ["error", "as-needed"],
-        "react/jsx-one-expression-per-line": [ { "allow": "literal" }],
+        "arrow-body-style": ["error", "always"],
+        "react/jsx-one-expression-per-line": [0],
         "no-bitwise": ["error", { "int32Hint": true }],
         "treatUndefinedAsUnspecified": [0],
         "no-unused-expressions": ["error", { "allowShortCircuit": true, "allowTernary": true }],
