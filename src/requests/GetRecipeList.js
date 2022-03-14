@@ -7,7 +7,7 @@ export default async function GetRecipeList(query) {
     }
     return axios
       .get(
-        `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${query}&ranking=2&number=6&apiKey=6a3d81f73aae4b83983232ca23a0e9b1`
+        `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${query}&ranking=2&number=6&apiKey=d6a7928ebad041768568adf130dbde42`
       )
       .then((response) => {
         const recipeResults = response.data.map((recipe) => {
