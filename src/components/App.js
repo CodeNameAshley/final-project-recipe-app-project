@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
+// import * as from "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 import "../styles/App.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
@@ -28,6 +28,7 @@ function App() {
         .then((response) => {
           const randomResults = response.data.recipes.map((recipe) => {
             const basicInfo = {
+              cuisines: recipe.cuisines,
               id: recipe.id,
               title: recipe.title,
               image: recipe.image,
@@ -38,6 +39,7 @@ function App() {
               vegan: recipe.vegan,
               vegetarian: recipe.vegetarian,
             };
+            console.log(basicInfo);
             return basicInfo;
           });
           return setRandomRecipe(randomResults);

@@ -13,6 +13,7 @@ export default async function GetRecipeList(query) {
         const recipeResults = response.data.map((recipe) => {
           console.log(response);
           const basicInfo = {
+            cuisines: recipe.cuisine,
             dairyFree: recipe.dairyFree,
             glutenFree: recipe.glutenFree,
             id: recipe.id,

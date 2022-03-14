@@ -1,4 +1,7 @@
-@import "./variables";
+@import "./sass-variables/variables";
+@import "./sass-variables/fonts";
+@import "./sass-variables/colours";
+
 
 .recipe-card__main{
     margin: 10px;
@@ -8,20 +11,20 @@
 
 .recipe-card__image-info {
     background-color: $recipeInfo-div-background;
-    border-radius: 20px;
+    border-radius: $primary-border-radius;
     padding: 5px;
 }
 
 .recipe-card__image {
-    border-radius: 20px;
+    border-radius: $primary-border-radius;
     max-height: 230px;
     max-width: 330px;
 }
 
 .recipe-card__title{
     font-family: $palanquin-dark;
-    color: #2C6E49;
-    font-size: 25px;
+    color: $normal-font-colour;
+    font-size: $RC-title-font-size;
     font-weight: $bold;
 
     text-align: center;
@@ -39,7 +42,7 @@
 
 .recipe-card__extra-info{
     font-family: $palanquin-dark;
-    color: #2C6E49;
+    color: $secondary-font-colour;
     font-size: 20px;
     font-weight: $normal-font-colour;
 
