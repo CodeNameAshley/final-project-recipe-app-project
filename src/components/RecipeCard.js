@@ -17,7 +17,7 @@ export default function RecipeCard({
   vegan,
   vegetarian,
 }) {
-  const recipeURL = `https://api.spoonacular.com/recipes/${id}/information?includeNutrition=false&includeInstructions=true&apiKey=${process.env.REACT_APP_API_KEY}`;
+  const recipeURL = `https://api.spoonacular.com/recipes/${id}/information?includeNutrition=false&includeInstructions=true&apiKey=5fbf7e36479c4617a499259980928117`;
 
   const handleClick = (event) => {
     event.preventDefault();

@@ -18,6 +18,7 @@ export default function SearchBar({ setSearchResults }) {
         setLoading(true);
         const recipes = await GetRecipeList(ingredients);
         setSearchResults(recipes);
+        console.log(recipes);
       } else {
         alert("min 5 ingredients");
       }

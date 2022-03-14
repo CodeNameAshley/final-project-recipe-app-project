@@ -23,7 +23,7 @@ function App() {
     try {
       axios
         .get(
-          `https://api.spoonacular.com/recipes/random?number=3&apiKey=${process.env.REACT_APP_API_KEY}`
+          `https://api.spoonacular.com/recipes/random?number=3&apiKey=5fbf7e36479c4617a499259980928117`
         )
         .then((response) => {
           const randomResults = response.data.recipes.map((recipe) => {
