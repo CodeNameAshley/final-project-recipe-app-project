@@ -49,6 +49,25 @@
     border-radius: $text-border-radius;
 }
 
+.recipe-info__key-facts{
+    border-radius: 25px;
+    font-size: 25px;
+    text-align: center;
+    padding-right: 50px;
+    padding-left: 50px;
+    padding-top: 10px;
+    margin-left: 200px;
+    margin-right: 200px;
+    background: $recipeInfo-div-background;
+    color: $normal-font-colour;
+    display: flex;
+    flex-direction: row;
+        p {
+            margin: 10px;
+        }
+}
+
+
 .recipe-info__header{
     color: $header-font-colour;
     font-size: $recipeInfo-header-size;

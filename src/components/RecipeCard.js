@@ -26,11 +26,20 @@ export default function RecipeCard({
       const details = {
         cheap: response.data.cheap,
         dairyFree: response.data.dairyFree,
+        diets: response.data.diets,
+        extendedIngredients: response.extendedIngredients,
         furtherInstructions: response.data.analyzedInstructions[0].steps,
+        glutenFree: response.data.glutenFree,
         image: response.data.image,
         instructions: response.data.instructions,
+        pricePerServing: response.data.pricePerServing,
+        readyInMinutes: response.data.readyInMinutes,
+        serving: response.data.servings,
         summary: response.data.summary,
+        sustainable: response.data.sustainable,
         title: response.data.title,
+        vegan: response.data.vegan,
+        vegetarian: response.data.vegetarian,
       };
       console.log(details);
       return selectRecipe(details);
@@ -53,21 +62,26 @@ export default function RecipeCard({
     dietaryInfo = "vegan";
   }
 
+  const formatTime = (time) => {
+    const hours = time / 60;
+    const timeInHours = Math.floor(hours);
+    const minutes = (hours - timeInHours) * 60;
+    const timeInMinutes = Math.round(minutes);
+
+    let servingTime;
+
+    if (timeInHours === 0) {
+      servingTime = `ready in: ${timeInMinutes} mins`;
+    } else if (timeInMinutes === 0) {
+      servingTime = `ready in: ${timeInHours} hours`;
+    } else {
+      servingTime = `ready in: ${timeInHours} hours and ${timeInMinutes} mins`;
+    }
+
+    return servingTime;
+  };
+
   const price = `${(Math.floor(pricePerServing) / 10) ^ 0}p`;
-  const hours = readyInMinutes / 60;
-  const timeInHours = Math.floor(hours);
-  const minutes = (hours - timeInHours) * 60;
-  const timeInMinutes = Math.round(minutes);
-
-  let servingTime;
-
-  if (timeInHours === 0) {
-    servingTime = `ready in: ${timeInMinutes} mins`;
-  } else if (timeInMinutes === 0) {
-    servingTime = `ready in: ${timeInHours} hours`;
-  } else {
-    servingTime = `ready in: ${timeInHours} hours and ${timeInMinutes} mins`;
-  }
 
   return (
     <div
@@ -84,7 +98,7 @@ export default function RecipeCard({
           <div className="recipe-card__title">{title.toLowerCase()}</div>
           <div className="recipe-card__extra-info">
             <p>{dietaryInfo}</p>
-            <p>{servingTime}</p>
+            <p>{formatTime(readyInMinutes)}</p>
             <p>{price}</p>
           </div>
         </div>
