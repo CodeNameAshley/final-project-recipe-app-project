@@ -24,10 +24,13 @@ export default function RecipeCard({
     axios.get(`${recipeURL}`).then((response) => {
       console.log(response);
       const details = {
+        cheap: response.data.cheap,
+        dairyFree: response.data.dairyFree,
+        furtherInstructions: response.data.analyzedInstructions[0].steps,
         image: response.data.image,
         instructions: response.data.instructions,
+        summary: response.data.summary,
         title: response.data.title,
-        furtherInstructions: response.data.analyzedInstructions[0].steps,
       };
       console.log(details);
       return selectRecipe(details);

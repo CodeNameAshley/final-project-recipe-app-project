@@ -1,21 +1,23 @@
-@import "./variables";
+@import "./sass-variables/variables";
+@import "./sass-variables/fonts";
+@import "./sass-variables/colours";
+
 
 .navBar__main {
     text-align: center;
     justify-content: center;
     width: 100%;
     height: auto;
-    background-color: white;
+    background-color: $secondary-background-colour;
     display: inline-flex;
     margin: 0 auto;
 }
 
 .nav-link__foodle{
     color: $logo-font-colour;
-    font-family: Palanquin Dark;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 60px;
+    font-family: $palanquin-dark;
+    font-weight: $bold;
+    font-size: $logo-font-size;
     line-height: auto;
 
 }
@@ -30,6 +32,6 @@
     justify-content: center;
     position: absolute;
     left: 50px;
-    top: 17.5px;
-    // margin-top: 1.5%;
+    top: 10px;
+
 }

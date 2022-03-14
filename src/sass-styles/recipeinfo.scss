@@ -1,4 +1,6 @@
-@import "./variables";
+@import "./sass-variables/variables";
+@import "./sass-variables/fonts";
+@import "./sass-variables/colours";
 
 .recipe-info {
     background: url("../images/chopping-board-bg.jpg");
@@ -7,11 +9,13 @@
     background-repeat: no-repeat;
     background-size: cover;
     font-family: $palanquin-dark;
+        h1 {
+            font-size: $RI-font-size;
+            color: $header-font-colour;
+            font-weight: $semi-bold-weight;
+        }
 }
 
-.recipe-info__background{
-    backdrop-filter: blur(5px);
-}
 
 .recipe-info__details {
     display: flex;
@@ -21,8 +25,9 @@
 }
 
 .recipe-info__title {
-    font-size: $recipeInfo-font-size;
-    color: $recipeInfo-font-colour;
+    font-size: $RI-title-size;
+    font-weight: $bold;
+    color: $title-font-colour;
     justify-content: center;
     align-items: center;
     vertical-align: middle;
@@ -31,25 +36,51 @@
     min-width: 556px;
     background: $recipeInfo-div-background;
     border-radius: $text-border-radius;
-    margin-right: 20px;
+    margin: 20px;
     padding-left: 20px;
     padding-right: 20px;
     display: flex;
 }
 
 .recipe-info__image {
-    margin-left: 20px;
+    margin: 20px;
     min-width: 556px;
     max-width: 556px;
     border-radius: $text-border-radius;
 }
 
 .recipe-info__header{
-    color: $recipeInfo-header-colour;
+    color: $header-font-colour;
     font-size: $recipeInfo-header-size;
 }
 
-.recipe-info__text {
+.recipe-info__summary{
+    border-radius: 50px;
+    font-size: 25px;
+    text-align: center;
+    padding-right: 50px;
+    padding-left: 50px;
+    padding-top: 10px;
+    margin-left: 150px;
+    margin-right: 150px;
+    background: $recipeInfo-div-background;
+    color: $normal-font-colour;
+}
+
+.recipe-info__steps{
+    border-radius: 50px;
+    font-size: 25px;
+    text-align: left;
+    padding-right: 50px;
+    padding-left: 50px;
+    padding-top: 10px;
+    margin-left: 125px;
+    margin-right: 125px;
+    background: $recipeInfo-div-background;
+    color: $normal-font-colour;
+}
+
+.recipe-info__fullText {
     border-radius: 50px 50px 0px 0px;
     font-size: 25px;
     text-align: center;
@@ -59,5 +90,5 @@
     margin-left: 125px;
     margin-right: 125px;
     background: $recipeInfo-div-background;
-    color: $recipeInfo-font-colour;
+    color: $normal-font-colour;
 }

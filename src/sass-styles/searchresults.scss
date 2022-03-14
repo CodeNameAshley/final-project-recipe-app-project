@@ -1,4 +1,7 @@
-@import "./variables";
+@import "./sass-variables/variables";
+@import "./sass-variables/fonts";
+@import "./sass-variables/colours";
+
 
 .search-results__main{
     margin-left: 10%;
