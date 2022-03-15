@@ -34,12 +34,15 @@ function App() {
               image: recipe.image,
               dairyFree: recipe.dairyFree,
               glutenFree: recipe.glutenFree,
+              missedIngredient: recipe.missedIngredient,
+              occasions: recipe.occasions,
               readyInMinutes: recipe.readyInMinutes,
               pricePerServing: recipe.pricePerServing,
+              usedIngredient: recipe.usedIngredient,
               vegan: recipe.vegan,
               vegetarian: recipe.vegetarian,
             };
-            console.log(basicInfo);
+            console.log(recipe.occasions);
             return basicInfo;
           });
           return setRandomRecipe(randomResults);

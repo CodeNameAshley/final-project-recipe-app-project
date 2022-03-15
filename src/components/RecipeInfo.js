@@ -8,6 +8,7 @@ export default function RecipeInfo({ result }) {
   const {
     cheap,
     dairyFree,
+    diets,
     extendedIngredients,
     furtherInstructions,
     glutenFree,
@@ -34,7 +35,16 @@ export default function RecipeInfo({ result }) {
   };
   // const structuredSummary = summary.replace(/(<([^>]+)>)/gi, "");
 
-  const price = `${(Math.floor(pricePerServing) / 10) ^ 0}p`;
+  const formatPrice = (price) => {
+    const finalPrice = `${(Math.floor(price) / 10) ^ 0}`;
+    let formattedPrice;
+    if (finalPrice.length > 3) {
+      formattedPrice = `£${finalPrice}`;
+    } else {
+      formattedPrice = `0.${finalPrice}p`;
+    }
+    return formattedPrice;
+  };
 
   const formatTime = (time) => {
     const hours = time / 60;
@@ -46,6 +56,8 @@ export default function RecipeInfo({ result }) {
 
     if (timeInHours === 0) {
       servingTime = `ready in: ${timeInMinutes} mins`;
+    } else if (timeInMinutes === 0 && timeInHours === 1) {
+      servingTime = `ready in: ${timeInHours} hour`;
     } else if (timeInMinutes === 0) {
       servingTime = `ready in: ${timeInHours} hours`;
     } else {
@@ -67,19 +79,37 @@ export default function RecipeInfo({ result }) {
             </div>
 
             <div className="recipe-info__key-facts">
-              <p>cheap: {cheap && cheap ? yes : no}</p>
-              <p>dairy free: {dairyFree && dairyFree ? yes : no}</p>
+              <p>💲 cheap: {cheap && cheap ? yes : no}</p>
+              <p>🧀 dairy free: {dairyFree && dairyFree ? yes : no}</p>
+              <p>🥗 diets: {diets && diets.join(", ")}</p>
               <p>
-                number of ingredients:
-                {extendedIngredients && extendedIngredients.length}
+                📜 no. of ingredients:{" "}
+                {extendedIngredients && extendedIngredients.length} items
               </p>
-              <p>gluten free: {glutenFree && glutenFree ? yes : no}</p>
-              <p>price: {price}</p>
-              <p>{formatTime(readyInMinutes)}</p>
-              <p>serving: {servings}</p>
-              <p>sustainable: {sustainable && sustainable ? yes : no}</p>
-              <p>vegan: {vegan && vegan ? yes : no}</p>
-              <p>vegetarian: {vegetarian && vegetarian ? yes : no}</p>
+              <p>🌾 gluten free: {glutenFree && glutenFree ? yes : no}</p>
+              <p>💰 price: {formatPrice(pricePerServing)}/serving</p>
+              <p>⏲️{formatTime(readyInMinutes)}</p>
+              <p>👨‍👩‍👧‍👦 serves: {servings} people</p>
+              <p>🌳 sustainable: {sustainable && sustainable ? yes : no}</p>
+              <p>🐄 vegan: {vegan && vegan ? yes : no}</p>
+              <p>🌱 vegetarian: {vegetarian && vegetarian ? yes : no}</p>
+            </div>
+
+            <div className="">
+              <h1>ingredients</h1>
+              <div className="recipe-info__ingredients-list">
+                <ul>
+                  {extendedIngredients &&
+                    extendedIngredients.map((ingredient) => {
+                      return (
+                        <li key={ingredient.id}>
+                          {/* {instruction.number} */}
+                          {ingredient.name}
+                        </li>
+                      );
+                    })}
+                </ul>
+              </div>
             </div>
 
             <h1>summary</h1>
@@ -121,6 +151,7 @@ RecipeInfo.propTypes = {
   result: PropTypes.shape({
     cheap: PropTypes.bool,
     dairyFree: PropTypes.bool,
+    diets: PropTypes.arrayOf(PropTypes.string),
     extendedIngredients: PropTypes.arrayOf(PropTypes.string),
     furtherInstructions: PropTypes.arrayOf(
       PropTypes.shape({

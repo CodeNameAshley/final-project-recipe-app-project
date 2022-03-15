@@ -18,6 +18,7 @@ export default function SearchBar({ setSearchResults }) {
         setLoading(true);
         const recipes = await GetRecipeList(ingredients);
         setSearchResults(recipes);
+        console.log(recipes);
       } else {
         alert("min 5 ingredients");
       }
@@ -50,26 +51,30 @@ export default function SearchBar({ setSearchResults }) {
       <div className="search-chip-div">
         <div className="chip__main">
           <div className="chip-and-button">
-            {ingredients.map((ingredient, index) => (
-              <div className="chipButton" key={ingredient}>
-                <div className="chip__index">{index + 1}</div>
-                <div className="chip__ingredient">{ingredient}</div>
-                &nbsp;
-                <button
-                  type="button"
-                  className="chip__delete"
-                  onClick={() => {
-                    const arr = [...ingredients];
-                    arr.filter((items) => items.index !== index);
-                    arr.splice(index, 1);
-                    console.log(arr);
-                    setIngredients(arr);
-                  }}
-                >
-                  x
-                </button>
-              </div>
-            ))}
+            {ingredients.map((ingredient, index) => {
+              return (
+                <div className="chipButton" key={ingredient}>
+                  <div className="chip__index">{index + 1}</div>
+                  <div className="chip__ingredient">{ingredient}</div>
+                  &nbsp;
+                  <button
+                    type="button"
+                    className="chip__delete"
+                    onClick={() => {
+                      const arr = [...ingredients];
+                      arr.filter((items) => {
+                        return items.index !== index;
+                      });
+                      arr.splice(index, 1);
+                      console.log(arr);
+                      setIngredients(arr);
+                    }}
+                  >
+                    x
+                  </button>
+                </div>
+              );
+            })}
           </div>
         </div>
         <form className="search-form" onSubmit={handleSubmit}>
@@ -80,7 +85,9 @@ export default function SearchBar({ setSearchResults }) {
               value={value}
               type="text"
               placeholder="type your ingredients to find recipes"
-              onChange={(e) => setValue(e.target.value)}
+              onChange={(e) => {
+                return setValue(e.target.value);
+              }}
             />
             <button
               className="search-bar__add"
