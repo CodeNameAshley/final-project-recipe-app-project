@@ -40,7 +40,6 @@ function App() {
               vegan: recipe.vegan.toString(),
               vegetarian: recipe.vegetarian.toString(),
             };
-            console.log(basicInfo.pricePerServing);
             return basicInfo;
           });
           return setRandomRecipe(randomResults);

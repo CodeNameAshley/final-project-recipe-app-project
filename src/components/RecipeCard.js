@@ -25,30 +25,35 @@ export default function RecipeCard({
 }) {
   const recipeURL = `https://api.spoonacular.com/recipes/${id}/information?includeNutrition=false&includeInstructions=true&apiKey=${process.env.REACT_APP_API_KEY}`;
 
-  const handleClick = (event) => {
+  const handleClick = async (event) => {
     event.preventDefault();
-    axios.get(`${recipeURL}`).then((response) => {
-      const details = {
-        cheap: response.data.cheap,
-        dairyFree: response.data.dairyFree,
-        diets: response.data.diets,
-        extendedIngredients: response.data.extendedIngredients,
-        furtherInstructions: response.data.analyzedInstructions[0].steps,
-        glutenFree: response.data.glutenFree,
-        image: response.data.image,
-        instructions: response.data.instructions,
-        pricePerServing: response.data.pricePerServing,
-        readyInMinutes: response.data.readyInMinutes,
-        servings: response.data.servings,
-        summary: response.data.summary,
-        sustainable: response.data.sustainable,
-        title: response.data.title,
-        vegan: response.data.vegan,
-        vegetarian: response.data.vegetarian,
-      };
-      console.log(details);
-      return selectRecipe(details);
-    });
+    try {
+      axios.get(`${recipeURL}`).then((response) => {
+        const details = {
+          cheap: response.data.cheap,
+          dairyFree: response.data.dairyFree,
+          diets: response.data.diets,
+          dishTypes: response.data.dishTypes,
+          extendedIngredients: response.data.extendedIngredients,
+          furtherInstructions: response.data.analyzedInstructions[0].steps,
+          glutenFree: response.data.glutenFree,
+          image: response.data.image,
+          instructions: response.data.instructions,
+          pricePerServing: response.data.pricePerServing,
+          readyInMinutes: response.data.readyInMinutes,
+          servings: response.data.servings,
+          summary: response.data.summary,
+          sustainable: response.data.sustainable,
+          title: response.data.title,
+          vegan: response.data.vegan,
+          vegetarian: response.data.vegetarian,
+          winePairing: response.data.winePairing,
+        };
+        return selectRecipe(details);
+      });
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   const formatCuisines = (cuisine) => {

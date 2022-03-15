@@ -1,3 +1,6 @@
+/* eslint-disable react/jsx-indent */
+/* eslint-disable indent */
+/* eslint-disable array-callback-return */
 /* eslint-disable no-bitwise */
 import React from "react";
 import PropTypes from "prop-types";
@@ -9,6 +12,7 @@ export default function RecipeInfo({ result }) {
     cheap,
     dairyFree,
     diets,
+    dishTypes,
     extendedIngredients,
     furtherInstructions,
     glutenFree,
@@ -22,7 +26,10 @@ export default function RecipeInfo({ result }) {
     title,
     vegan,
     vegetarian,
+    winePairing,
   } = result;
+
+  console.log(winePairing);
 
   const yes = "🟢";
   const no = "🔴";
@@ -33,7 +40,59 @@ export default function RecipeInfo({ result }) {
       .replace(/\s{2,}/g, " ")
       .trim();
   };
-  // const structuredSummary = summary.replace(/(<([^>]+)>)/gi, "");
+
+  const formatDishTypes = (dish) => {
+    let formattedDishTypes;
+
+    if (dish.length === 1) {
+      formattedDishTypes = `🍽️dish type: ${dish.toString()}`;
+    } else if (dish.length > 1) {
+      formattedDishTypes = `dish type: ${dish.join(", ")}`;
+    } else {
+      formattedDishTypes = null;
+    }
+
+    return formattedDishTypes;
+  };
+
+  const formatPairingDescription = (wineString) => {
+    let formattedPairingDesc;
+    if (wineString) {
+      formattedPairingDesc = `📝pairing description: ${wineString}`;
+    } else {
+      formattedPairingDesc = null;
+    }
+    return formattedPairingDesc;
+  };
+
+  const formatPairingMatch = (matchArray) => {
+    let formattedPairingMatch;
+    if (matchArray) {
+      matchArray.map((match) => {
+        const matchInfo = {
+          description: match.description,
+          price: match.price,
+          title: match.title,
+        };
+        formattedPairingMatch = `title: ${matchInfo.title}, price: ${matchInfo.price}, description ${matchInfo.description}`;
+      });
+    } else {
+      formattedPairingMatch = null;
+    }
+    return formattedPairingMatch;
+  };
+
+  const formatPairedWines = (winesArray) => {
+    let formattedWines;
+    if (winesArray && winesArray.length === 1) {
+      formattedWines = `🍾paired wines: ${winesArray.toString()}`;
+    } else if (winesArray && winesArray.length > 1) {
+      formattedWines = `🍾paired wines: ${winesArray.join(", ")}`;
+    } else {
+      formattedWines = null;
+    }
+    return formattedWines;
+  };
 
   const formatPrice = (price) => {
     const finalPrice = Math.round(price);
@@ -67,6 +126,19 @@ export default function RecipeInfo({ result }) {
     }
 
     return servingTime;
+  };
+
+  const formatUnit = (unit) => {
+    let formattedUnit;
+    if (unit > 1) {
+      formattedUnit = "pieces";
+    } else if (unit === 1) {
+      formattedUnit = "piece";
+    } else {
+      formattedUnit = null;
+    }
+
+    return formattedUnit;
   };
 
   return (
@@ -107,7 +179,10 @@ export default function RecipeInfo({ result }) {
                       return (
                         <li key={ingredient.id}>
                           {/* {instruction.number} */}
-                          {ingredient.name}
+                          {ingredient.name}: {Math.ceil(ingredient.amount)}{" "}
+                          {ingredient.unit
+                            ? ingredient.unit.toLowerCase()
+                            : formatUnit(ingredient.amount)}
                         </li>
                       );
                     })}
@@ -132,6 +207,24 @@ export default function RecipeInfo({ result }) {
                   })}
               </ol>
             </div>
+
+            <div>
+              <h1>dish types and wine pairing</h1>
+              <div className="recipe-info__dish-wine">
+                <div>
+                  {winePairing && formatPairedWines(winePairing.pairedWines)}
+                  <br />
+                  {winePairing &&
+                    formatPairingDescription(winePairing.pairingText)}
+                  <br />
+                  {winePairing & formatPairingMatch(winePairing)}
+                </div>
+                <div className="recipe-info__dish-types">
+                  {dishTypes && formatDishTypes(dishTypes)}
+                </div>
+              </div>
+            </div>
+
             <div className="recipe-info__instructions">
               <h1> full instructions </h1>
               <div className="recipe-info__fullText">
@@ -150,6 +243,7 @@ RecipeInfo.propTypes = {
     cheap: PropTypes.bool,
     dairyFree: PropTypes.bool,
     diets: PropTypes.arrayOf(PropTypes.string),
+    dishTypes: PropTypes.arrayOf(PropTypes.string),
     extendedIngredients: PropTypes.arrayOf(PropTypes.shape()),
     furtherInstructions: PropTypes.arrayOf(
       PropTypes.shape({
@@ -167,5 +261,16 @@ RecipeInfo.propTypes = {
     title: PropTypes.string,
     vegan: PropTypes.bool,
     vegetarian: PropTypes.bool,
+    winePairing: PropTypes.shape({
+      pairedWines: PropTypes.arrayOf(PropTypes.string),
+      pairingText: PropTypes.string,
+      productMatches: PropTypes.arrayOf(
+        PropTypes.shape({
+          title: PropTypes.string,
+          description: PropTypes.string,
+          price: PropTypes.string,
+        })
+      ),
+    }),
   }).isRequired,
 };
