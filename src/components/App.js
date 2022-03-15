@@ -32,17 +32,15 @@ function App() {
               id: recipe.id,
               title: recipe.title,
               image: recipe.image,
-              dairyFree: recipe.dairyFree,
-              glutenFree: recipe.glutenFree,
-              missedIngredient: recipe.missedIngredient,
+              dairyFree: recipe.dairyFree.toString(),
+              glutenFree: recipe.glutenFree.toString(),
               occasions: recipe.occasions,
               readyInMinutes: recipe.readyInMinutes,
               pricePerServing: recipe.pricePerServing,
-              usedIngredient: recipe.usedIngredient,
-              vegan: recipe.vegan,
-              vegetarian: recipe.vegetarian,
+              vegan: recipe.vegan.toString(),
+              vegetarian: recipe.vegetarian.toString(),
             };
-            console.log(recipe.occasions);
+            console.log(basicInfo.pricePerServing);
             return basicInfo;
           });
           return setRandomRecipe(randomResults);

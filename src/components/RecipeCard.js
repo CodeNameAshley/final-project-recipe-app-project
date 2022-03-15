@@ -54,7 +54,7 @@ export default function RecipeCard({
   const formatCuisines = (cuisine) => {
     let formattedCuisines;
     if (cuisine.length >= 1) {
-      formattedCuisines = `cuisines: ${cuisine.join(", ")}`;
+      formattedCuisines = `🗺️cuisines: ${cuisine.join(", ")}`;
     } else if (cuisine.length < 1) {
       formattedCuisines = null;
     }
@@ -64,20 +64,33 @@ export default function RecipeCard({
   let dietaryInfo;
 
   if (vegetarian && glutenFree && dairyFree) {
-    dietaryInfo = "🌱 vegetarian, 🌾 gluten free & 🧀 dairy free";
+    dietaryInfo = "🌱vegetarian, 🌾gluten free & 🧀dairy free";
   } else if (vegetarian && dairyFree) {
-    dietaryInfo = "🌱 vegetarian & 🧀 dairy free";
+    dietaryInfo = "🌱vegetarian & 🧀dairy free";
   } else if (vegetarian && glutenFree) {
-    dietaryInfo = "🌱 vegetarian & 🌾 gluten free";
+    dietaryInfo = "🌱vegetarian & 🌾gluten free";
   } else if (vegetarian) {
-    dietaryInfo = " vegetarian";
+    dietaryInfo = "🌱vegetarian";
   } else if (vegan && glutenFree) {
-    dietaryInfo = "🐄 vegan & 🌾 gluten free";
+    dietaryInfo = "🐄vegan & 🌾gluten free";
   } else if (vegan) {
-    dietaryInfo = "🐄 vegan";
+    dietaryInfo = "🐄vegan";
   } else {
     dietaryInfo = null;
   }
+
+  const formatMissedIngredients = (missedIngredient) => {
+    let formattedIngredient;
+    if (missedIngredient > 1) {
+      formattedIngredient = `🛒missed ingredient: ${missedIngredient} items`;
+    } else if (missedIngredient === 1) {
+      formattedIngredient = `🛒missed ingredient: ${missedIngredient} item`;
+    } else {
+      formattedIngredient = null;
+    }
+
+    return formattedIngredient;
+  };
 
   const formatOccasions = (occasion) => {
     let formattedOccasion;
@@ -90,12 +103,14 @@ export default function RecipeCard({
   };
 
   const formatPrice = (price) => {
-    const finalPrice = `${(Math.floor(price) / 10) ^ 0}`;
+    const finalPrice = Math.round(price);
     let formattedPrice;
-    if (finalPrice.length > 3) {
-      formattedPrice = `💰 price per serving: £${finalPrice}`;
+    if (finalPrice > 99) {
+      formattedPrice = `💰price per serving: £${(finalPrice / 100).toFixed(2)}`;
+    } else if (finalPrice <= 99 && finalPrice !== 0) {
+      formattedPrice = `💰price per serving: 0.${finalPrice}p`;
     } else {
-      formattedPrice = `💰 price per serving: 0.${finalPrice}p`;
+      formattedPrice = null;
     }
     return formattedPrice;
   };
@@ -108,9 +123,9 @@ export default function RecipeCard({
 
     let servingTime;
 
-    if (timeInHours === 0) {
+    if (timeInHours === 0 && timeInMinutes > 0) {
       servingTime = `⏲️ ready in: ${timeInMinutes} mins`;
-    } else if (timeInMinutes === 0) {
+    } else if (timeInMinutes === 0 && timeInHours > 0) {
       servingTime = `⏲️ ready in: ${timeInHours} hours`;
     } else if (timeInHours > 0 && timeInMinutes > 0) {
       servingTime = `⏲️ ready in: ${timeInHours} hours and ${timeInMinutes} mins`;
@@ -119,6 +134,18 @@ export default function RecipeCard({
     }
 
     return servingTime;
+  };
+
+  const formatUsedIngredients = (usedIngredient) => {
+    let formattedIngredient;
+    if (usedIngredient > 1) {
+      formattedIngredient = `🍳used ingredient: ${usedIngredient} items`;
+    } else if (usedIngredient === 1) {
+      formattedIngredient = `🍳used ingredient: ${usedIngredient} item`;
+    } else {
+      formattedIngredient = null;
+    }
+    return formattedIngredient;
   };
 
   return (
@@ -140,8 +167,8 @@ export default function RecipeCard({
             <p>{formatPrice(pricePerServing)}</p>
             <p>{formatCuisines(cuisines)}</p>
             <p>{formatOccasions(occasions)}</p>
-            <p>{missedIngredientCount && missedIngredientCount}</p>
-            <p>{usedIngredientCount && usedIngredientCount}</p>
+            <p>{formatMissedIngredients(missedIngredientCount)}</p>
+            <p>{formatUsedIngredients(usedIngredientCount)}</p>
           </div>
         </div>
       </Link>
@@ -150,18 +177,31 @@ export default function RecipeCard({
 }
 
 RecipeCard.propTypes = {
-  cuisines: PropTypes.arrayOf(PropTypes.string).isRequired,
-  dairyFree: PropTypes.bool.isRequired,
-  glutenFree: PropTypes.bool.isRequired,
+  cuisines: PropTypes.arrayOf(PropTypes.string),
+  dairyFree: PropTypes.string,
+  glutenFree: PropTypes.string,
   id: PropTypes.number.isRequired,
   image: PropTypes.string.isRequired,
-  missedIngredientCount: PropTypes.number.isRequired,
-  occasions: PropTypes.arrayOf(PropTypes.string).isRequired,
-  pricePerServing: PropTypes.number.isRequired,
-  readyInMinutes: PropTypes.number.isRequired,
+  missedIngredientCount: PropTypes.number,
+  occasions: PropTypes.arrayOf(PropTypes.string),
+  pricePerServing: PropTypes.number,
+  readyInMinutes: PropTypes.number,
   selectRecipe: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
-  usedIngredientCount: PropTypes.number.isRequired,
-  vegan: PropTypes.bool.isRequired,
-  vegetarian: PropTypes.bool.isRequired,
+  usedIngredientCount: PropTypes.number,
+  vegan: PropTypes.string,
+  vegetarian: PropTypes.string,
+};
+
+RecipeCard.defaultProps = {
+  cuisines: [],
+  dairyFree: "",
+  glutenFree: "",
+  missedIngredientCount: 0,
+  occasions: [],
+  pricePerServing: 0,
+  readyInMinutes: 0,
+  usedIngredientCount: 0,
+  vegan: "",
+  vegetarian: "",
 };

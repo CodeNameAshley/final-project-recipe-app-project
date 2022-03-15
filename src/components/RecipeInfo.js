@@ -36,12 +36,14 @@ export default function RecipeInfo({ result }) {
   // const structuredSummary = summary.replace(/(<([^>]+)>)/gi, "");
 
   const formatPrice = (price) => {
-    const finalPrice = `${(Math.floor(price) / 10) ^ 0}`;
+    const finalPrice = Math.round(price);
     let formattedPrice;
-    if (finalPrice.length > 3) {
-      formattedPrice = `£${finalPrice}`;
-    } else {
+    if (finalPrice > 99) {
+      formattedPrice = `£${(finalPrice / 100).toFixed(2)}`;
+    } else if (finalPrice <= 99 && finalPrice !== 0) {
       formattedPrice = `0.${finalPrice}p`;
+    } else {
+      formattedPrice = null;
     }
     return formattedPrice;
   };
@@ -78,6 +80,7 @@ export default function RecipeInfo({ result }) {
               <img className="recipe-info__image" src={image} alt={title} />
             </div>
 
+            <h1>key points</h1>
             <div className="recipe-info__key-facts">
               <p>💲 cheap: {cheap && cheap ? yes : no}</p>
               <p>🧀 dairy free: {dairyFree && dairyFree ? yes : no}</p>
@@ -125,12 +128,7 @@ export default function RecipeInfo({ result }) {
               <ol>
                 {furtherInstructions &&
                   furtherInstructions.map((instruction) => {
-                    return (
-                      <li key={instruction.step}>
-                        {/* {instruction.number} */}
-                        {instruction.step}
-                      </li>
-                    );
+                    return <li key={instruction.step}>{instruction.step}</li>;
                   })}
               </ol>
             </div>
@@ -152,10 +150,9 @@ RecipeInfo.propTypes = {
     cheap: PropTypes.bool,
     dairyFree: PropTypes.bool,
     diets: PropTypes.arrayOf(PropTypes.string),
-    extendedIngredients: PropTypes.arrayOf(PropTypes.string),
+    extendedIngredients: PropTypes.arrayOf(PropTypes.shape()),
     furtherInstructions: PropTypes.arrayOf(
       PropTypes.shape({
-        // number: PropTypes.number,
         step: PropTypes.string,
       })
     ),

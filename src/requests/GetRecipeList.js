@@ -19,17 +19,11 @@ export default async function GetRecipeList(ingredients) {
         });
         const filteredResults = recipeResults.map((recipe) => {
           const basicInfo = {
-            dairyFree: recipe.dairyFree,
-            glutenFree: recipe.glutenFree,
             image: recipe.image,
             id: recipe.id,
             missedIngredientCount: recipe.missedIngredientCount,
-            pricePerServing: recipe.pricePerServing,
-            readyInMinutes: recipe.readyInMinutes,
             title: recipe.title,
             usedIngredientCount: recipe.usedIngredientCount,
-            vegan: recipe.vegan,
-            vegetarian: recipe.vegetarian,
           };
           return basicInfo;
         });
