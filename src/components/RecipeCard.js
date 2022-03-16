@@ -1,87 +1,88 @@
+/* eslint-disable object-curly-newline */
+/* eslint-disable array-callback-return */
+/* eslint-disable no-unused-expressions */
 /* eslint-disable no-bitwise */
 import React from "react";
 import PropTypes, { number } from "prop-types";
 import "../sass-styles/recipecard.scss";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import {
+  formatCuisines,
+  formatMissedIngredients,
+  formatOccasions,
+  formatPrice,
+  formatTime,
+  formatUsedIngredients,
+} from "../formatting-functions/formattingFunctions";
 
 export default function RecipeCard({
+  cuisines,
   dairyFree,
   glutenFree,
   id,
   image,
+  missedIngredientCount,
+  occasions,
   pricePerServing,
   readyInMinutes,
   selectRecipe,
   title,
+  usedIngredientCount,
   vegan,
   vegetarian,
 }) {
-  const recipeURL = `https://api.spoonacular.com/recipes/${id}/information?includeNutrition=false&includeInstructions=true&apiKey=5fbf7e36479c4617a499259980928117`;
+  const recipeURL = `https://api.spoonacular.com/recipes/${id}/information?includeNutrition=false&includeInstructions=true&apiKey=${process.env.REACT_APP_API_KEY}`;
 
-  const handleClick = (event) => {
+  const handleClick = async (event) => {
     event.preventDefault();
-    axios.get(`${recipeURL}`).then((response) => {
-      console.log(response);
-      const details = {
-        cheap: response.data.cheap,
-        dairyFree: response.data.dairyFree,
-        diets: response.data.diets,
-        extendedIngredients: response.extendedIngredients,
-        furtherInstructions: response.data.analyzedInstructions[0].steps,
-        glutenFree: response.data.glutenFree,
-        image: response.data.image,
-        instructions: response.data.instructions,
-        pricePerServing: response.data.pricePerServing,
-        readyInMinutes: response.data.readyInMinutes,
-        serving: response.data.servings,
-        summary: response.data.summary,
-        sustainable: response.data.sustainable,
-        title: response.data.title,
-        vegan: response.data.vegan,
-        vegetarian: response.data.vegetarian,
-      };
-      console.log(details);
-      return selectRecipe(details);
-    });
+    try {
+      axios.get(`${recipeURL}`).then((response) => {
+        const details = {
+          cheap: response.data.cheap,
+          dairyFree: response.data.dairyFree,
+          diets: response.data.diets,
+          dishTypes: response.data.dishTypes,
+          extendedIngredients: response.data.extendedIngredients,
+          furtherInstructions: response.data.analyzedInstructions[0].steps,
+          glutenFree: response.data.glutenFree,
+          image: response.data.image,
+          instructions: response.data.instructions,
+          pricePerServing: response.data.pricePerServing,
+          readyInMinutes: response.data.readyInMinutes,
+          servings: response.data.servings,
+          summary: response.data.summary,
+          sustainable: response.data.sustainable,
+          title: response.data.title,
+          vegan: response.data.vegan,
+          vegetarian: response.data.vegetarian,
+          winePairing: response.data.winePairing,
+        };
+        window.scrollTo(0, 0);
+        return selectRecipe(details);
+      });
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   let dietaryInfo;
 
   if (vegetarian && glutenFree && dairyFree) {
-    dietaryInfo = "vegetarian, gluten free & dairy free";
+    dietaryInfo = "🌱vegetarian, 🌾gluten free & 🧀dairy free";
   } else if (vegetarian && dairyFree) {
-    dietaryInfo = "vegetarian & dairy free";
+    dietaryInfo = "🌱vegetarian & 🧀dairy free";
   } else if (vegetarian && glutenFree) {
-    dietaryInfo = "vegetarian & gluten free";
+    dietaryInfo = "🌱vegetarian & 🌾gluten free";
   } else if (vegetarian) {
-    dietaryInfo = "vegetarian";
+    dietaryInfo = "🌱vegetarian";
   } else if (vegan && glutenFree) {
-    dietaryInfo = "vegan & gluten free";
+    dietaryInfo = "🐄vegan & 🌾gluten free";
   } else if (vegan) {
-    dietaryInfo = "vegan";
+    dietaryInfo = "🐄vegan";
+  } else {
+    dietaryInfo = null;
   }
-
-  const formatTime = (time) => {
-    const hours = time / 60;
-    const timeInHours = Math.floor(hours);
-    const minutes = (hours - timeInHours) * 60;
-    const timeInMinutes = Math.round(minutes);
-
-    let servingTime;
-
-    if (timeInHours === 0) {
-      servingTime = `ready in: ${timeInMinutes} mins`;
-    } else if (timeInMinutes === 0) {
-      servingTime = `ready in: ${timeInHours} hours`;
-    } else {
-      servingTime = `ready in: ${timeInHours} hours and ${timeInMinutes} mins`;
-    }
-
-    return servingTime;
-  };
-
-  const price = `${(Math.floor(pricePerServing) / 10) ^ 0}p`;
 
   return (
     <div
@@ -99,7 +100,11 @@ export default function RecipeCard({
           <div className="recipe-card__extra-info">
             <p>{dietaryInfo}</p>
             <p>{formatTime(readyInMinutes)}</p>
-            <p>{price}</p>
+            <p>{formatPrice(pricePerServing)}</p>
+            <p>{formatCuisines(cuisines)}</p>
+            <p>{formatOccasions(occasions)}</p>
+            <p>{formatMissedIngredients(missedIngredientCount)}</p>
+            <p>{formatUsedIngredients(usedIngredientCount)}</p>
           </div>
         </div>
       </Link>
@@ -108,14 +113,31 @@ export default function RecipeCard({
 }
 
 RecipeCard.propTypes = {
-  dairyFree: PropTypes.bool.isRequired,
-  glutenFree: PropTypes.bool.isRequired,
+  cuisines: PropTypes.arrayOf(PropTypes.string),
+  dairyFree: PropTypes.string,
+  glutenFree: PropTypes.string,
   id: PropTypes.number.isRequired,
   image: PropTypes.string.isRequired,
-  pricePerServing: PropTypes.number.isRequired,
-  readyInMinutes: PropTypes.number.isRequired,
+  missedIngredientCount: PropTypes.number,
+  occasions: PropTypes.arrayOf(PropTypes.string),
+  pricePerServing: PropTypes.number,
+  readyInMinutes: PropTypes.number,
   selectRecipe: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
-  vegan: PropTypes.bool.isRequired,
-  vegetarian: PropTypes.bool.isRequired,
+  usedIngredientCount: PropTypes.number,
+  vegan: PropTypes.string,
+  vegetarian: PropTypes.string,
+};
+
+RecipeCard.defaultProps = {
+  cuisines: [],
+  dairyFree: "",
+  glutenFree: "",
+  missedIngredientCount: 0,
+  occasions: [],
+  pricePerServing: 0,
+  readyInMinutes: 0,
+  usedIngredientCount: 0,
+  vegan: "",
+  vegetarian: "",
 };

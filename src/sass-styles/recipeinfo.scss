@@ -3,115 +3,224 @@
 @import "./sass-variables/colours";
 
 .recipe-info {
-    background: url("../images/chopping-board-bg.jpg");
+    background: url("../images/chopping-board-bg.png");
     height: 100%;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     font-family: $palanquin-dark;
+    @media screen and (max-width: $phone-screen-size) {
+        background-size: cover;
+    }
         h1 {
-            font-size: $RI-font-size;
+            font-size: $header-font-size;
             color: $header-font-colour;
             font-weight: $semi-bold-weight;
+            @media screen and (max-width: $tablet-screen-size) {
+                font-size: 30px;
+            }
+            @media screen and (max-width: $phone-screen-size) {
+                font-size: 30px;
+                margin: 10px;
+            }
         }
 }
 
 
-.recipe-info__details {
+.recipe-info__title-image {
+    margin-left: 100px;
+    margin-right: 100px;
     display: flex;
     justify-content: center;
     flex-flow: row wrap;
-    padding-top: 5%;
+    padding-top: 50px;
+    @media screen and (max-width: $tablet-screen-size) {
+        margin-left: 50px;
+        margin-right: 50px;
+        
+    }
+    @media screen and (max-width: $phone-screen-size) {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+    
+    .recipe-info__title {
+        font-size: $RI-title-size;
+        font-weight: $bold;
+        color: $title-font-colour;
+        justify-content: center;
+        align-items: center;
+        vertical-align: middle;
+        text-align: center;
+        min-width: 550px;
+        max-width: 550px;
+        min-height: 350px;
+        max-height: 400px;
+        background: $recipeInfo-div-background;
+        border-radius: $text-border-radius;
+        display: flex;
+        margin: 10px;
+        padding: 10px;
+        @media screen and (max-width: $tablet-screen-size) {
+            font-size: 30px;
+            min-height: auto;
+            max-height: 400px;
+            min-width: 200px;
+            max-width: 400px;
+        }
+        @media screen and (max-width: $phone-screen-size) {
+            font-size: 25px;
+            border-radius: 25px;
+        }
+    }
+    .recipe-info__image {
+        margin: 10px;
+        min-width: 556px;
+        max-width: 556px;
+        border-radius: $text-border-radius;
+        @media screen and (max-width: $tablet-screen-size) {
+            max-height: 400px;
+            min-height: 200px;
+            min-width: 200px;
+            max-width: 450px;
+        }
+        @media screen and (max-width: $phone-screen-size) {
+            border-radius: 25px;
+        }
+    }
 }
 
-.recipe-info__title {
-    font-size: $RI-title-size;
-    font-weight: $bold;
-    color: $title-font-colour;
-    justify-content: center;
-    align-items: center;
-    vertical-align: middle;
-    text-align: center;
-    max-width: 556px ;
-    min-width: 556px;
-    background: $recipeInfo-div-background;
+
+
+.recipe-info__key-facts,
+.recipe-info__ingredients-list,
+.recipe-info__dish-wine{
     border-radius: $text-border-radius;
-    margin: 20px;
-    padding-left: 20px;
-    padding-right: 20px;
-    display: flex;
-}
-
-.recipe-info__image {
-    margin: 20px;
-    min-width: 556px;
-    max-width: 556px;
-    border-radius: $text-border-radius;
-}
-
-.recipe-info__key-facts{
-    border-radius: 25px;
-    font-size: 25px;
+    font-size: $RI-normal-font-size;
     text-align: center;
-    padding-right: 50px;
-    padding-left: 50px;
-    padding-top: 10px;
+    padding: 10px;
     margin-left: 200px;
     margin-right: 200px;
     background: $recipeInfo-div-background;
-    color: $normal-font-colour;
+    color: $secondary-font-colour;
     display: flex;
     flex-direction: row;
     flex-flow: wrap;
     justify-content: space-evenly;
+    @media screen and (max-width: $tablet-screen-size) {
+        font-size: 20px;
+        margin-left: 50px;
+        margin-right: 50px;
+        padding: 5px;
+    }
+    @media screen and (max-width: $phone-screen-size) {
+        margin-left: 20px;
+        margin-right: 20px;
+        border-radius: 25px;
+    }
         p {
             margin: 20px;
             display: inline-flex;
             text-align: center;
+            @media screen and (max-width: $tablet-screen-size) {
+                margin: 5px;
+            }
+        }
+        li {
+            margin: 20px;
+            display: inline-flex;
+            text-align: center;
+            @media screen and (max-width: $tablet-screen-size) {
+                margin: 5px;
+                text-align: left;
+                justify-content: center;
+            }
+        }
+        ul {
+            margin: 20px;
+            display: contents;
+            text-align: center;
+
+            @media screen and (max-width: $tablet-screen-size) {
+                margin: 5px;
+                text-align: left;
+                justify-content: center;
+            }
         }
 }
 
 
 .recipe-info__header{
     color: $header-font-colour;
-    font-size: $recipeInfo-header-size;
+    font-size: $header-font-size;
+    @media screen and (max-width: $tablet-screen-size) {
+        font-size: 25px;
+    }
 }
 
 .recipe-info__summary{
-    border-radius: 50px;
-    font-size: 25px;
+    border-radius: $text-border-radius;
+    font-size: $RI-normal-font-size;
     text-align: center;
-    padding-right: 50px;
-    padding-left: 50px;
-    padding-top: 10px;
-    margin-left: 150px;
-    margin-right: 150px;
+    padding: 20px;
+    margin-left: 200px;
+    margin-right: 200px;
     background: $recipeInfo-div-background;
-    color: $normal-font-colour;
+    color: $secondary-font-colour;
+    @media screen and (max-width: $tablet-screen-size) {
+        font-size: 20px;
+        margin-left: 50px;
+        margin-right: 50px;
+        padding: 15px;
+    }
+    @media screen and (max-width: $phone-screen-size) {
+        margin-left: 20px;
+        margin-right: 20px;
+        border-radius: 25px;
+    }
+
+}
+.recipe-info__steps{
+    border-radius: $text-border-radius;
+    font-size: $RI-normal-font-size;
+    text-align: left;
+    padding: 10px;
+    margin-left: 200px;
+    margin-right: 200px;
+    background: $recipeInfo-div-background;
+    color: $secondary-font-colour;
+    @media screen and (max-width: $tablet-screen-size) {
+        font-size: 20px;
+        margin-left: 50px;
+        margin-right: 50px;
+        padding: 10px;
+    }
+    @media screen and (max-width: $phone-screen-size) {
+        margin-left: 20px;
+        margin-right: 20px;
+        border-radius: 25px;
+    }
 }
 
-.recipe-info__steps{
-    border-radius: 50px;
-    font-size: 25px;
-    text-align: left;
-    padding-right: 50px;
-    padding-left: 50px;
-    padding-top: 10px;
-    margin-left: 125px;
-    margin-right: 125px;
-    background: $recipeInfo-div-background;
-    color: $normal-font-colour;
-}
 
 .recipe-info__fullText {
     border-radius: 50px 50px 0px 0px;
-    font-size: 25px;
+    font-size: $RI-normal-font-size;
     text-align: center;
-    padding-right: 50px;
-    padding-left: 50px;
-    padding-top: 10px;
-    margin-left: 125px;
-    margin-right: 125px;
+    padding: 20px;
+    margin-left: 200px;
+    margin-right: 200px;
     background: $recipeInfo-div-background;
-    color: $normal-font-colour;
+    color: $secondary-font-colour;
+    @media screen and (max-width: $tablet-screen-size) {
+        font-size: 20px;
+        margin-left: 50px;
+        margin-right: 50px;
+        padding: 15px;
+    }
+    @media screen and (max-width: $phone-screen-size) {
+        margin-left: 20px;
+        margin-right: 20px;
+        border-radius: 25px 25px 0px 0px;
+    }
 }

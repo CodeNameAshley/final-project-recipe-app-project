@@ -7,57 +7,64 @@
     margin: 10px;
     display: inline-flex;
     grid-template-columns: auto auto auto;
+        a:link {
+            text-decoration: none;
+        }
 }
 
 .recipe-card__image-info {
     background-color: $recipeInfo-div-background;
     border-radius: $primary-border-radius;
-    padding: 5px;
-}
 
-.recipe-card__image {
-    border-radius: $primary-border-radius;
-    max-height: 230px;
-    max-width: 330px;
-}
+    .recipe-card__image{
+        border-radius: $primary-border-radius;
+        max-height: 230px;
+        max-width: 330px;
+    }
+    .recipe-card__title{
+        color: $title-font-colour;
+        font-family: $palanquin-dark;
+        font-size: $RC-title-font-size;
+        font-weight: $bold;
 
-.recipe-card__title{
-    font-family: $palanquin-dark;
-    color: $normal-font-colour;
-    font-size: $RC-title-font-size;
-    font-weight: $bold;
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        position: relative;
+        text-align: center;
+        vertical-align: center;
 
-    text-align: center;
-    justify-content: center;
+        max-width: 330px;
 
-    max-width: 330px;
-
-    align-items: center;
-    display: block;
-    position: relative;
+        @media screen and (max-width: $tablet-screen-size) {
+            font-size: 20px;
+        };
+        @media screen and (max-width: $phone-screen-size) {
+            font-size: 25px;
+        }
+        
+    }
+    .recipe-card__extra-info{
+        color: $secondary-font-colour;
+        font-family: $palanquin-dark;
+        font-size: $normal-text-font-size;
+        font-weight: $regular-weight;
+        text-align: center;
     
-    margin: 10px;
+        align-items: center;
+        display: block;
+        justify-content: center;
+        position: relative;
+    
+        max-width: 330px;
+    
+        z-index: 999;
+        @media screen and (max-width: $phone-screen-size) {
+            font-size: 18px;
+        }
+    }
+    
 }
 
 
-.recipe-card__extra-info{
-    font-family: $palanquin-dark;
-    color: $secondary-font-colour;
-    font-size: 20px;
-    font-weight: $normal-font-colour;
-
-    text-align: center;
-    justify-content: center;
-
-    max-width: 330px;
-
-    align-items: center;
-    display: block;
-    position: relative;
-    z-index: 999;
-}
-
-a:link {
-    text-decoration: none;
-}
 

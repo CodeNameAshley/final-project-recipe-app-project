@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 // import * as from "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
-import "../styles/App.css";
+import "../styles/App.scss";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import SearchBar from "./SearchBar";
 import SearchResults from "./SearchResults";
@@ -12,9 +12,10 @@ import ReplacementImage from "../images/replacement-image.png";
 function App() {
   const [searchResults, setSearchResults] = useState(null);
   const [selectedRecipe, setSelectedRecipe] = useState({
-    title: "test title",
+    title: "oh no! It seems like the title didn't load!",
     image: ReplacementImage,
-    instructions: "test instructions",
+    instructions: "the robots have lost all information!",
+    summary: "the summary has disappeared",
   });
 
   const [randomRecipe, setRandomRecipe] = useState([]);
@@ -23,7 +24,7 @@ function App() {
     try {
       axios
         .get(
-          `https://api.spoonacular.com/recipes/random?number=3&apiKey=5fbf7e36479c4617a499259980928117`
+          `https://api.spoonacular.com/recipes/random?number=6&apiKey=${process.env.REACT_APP_API_KEY}`
         )
         .then((response) => {
           const randomResults = response.data.recipes.map((recipe) => {
@@ -32,14 +33,14 @@ function App() {
               id: recipe.id,
               title: recipe.title,
               image: recipe.image,
-              dairyFree: recipe.dairyFree,
-              glutenFree: recipe.glutenFree,
+              dairyFree: recipe.dairyFree.toString(),
+              glutenFree: recipe.glutenFree.toString(),
+              occasions: recipe.occasions,
               readyInMinutes: recipe.readyInMinutes,
               pricePerServing: recipe.pricePerServing,
-              vegan: recipe.vegan,
-              vegetarian: recipe.vegetarian,
+              vegan: recipe.vegan.toString(),
+              vegetarian: recipe.vegetarian.toString(),
             };
-            console.log(basicInfo);
             return basicInfo;
           });
           return setRandomRecipe(randomResults);

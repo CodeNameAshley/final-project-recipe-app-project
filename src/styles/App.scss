@@ -1,0 +1,16 @@
+@import "../sass-styles/sass-variables/variables";
+@import "../sass-styles/sass-variables/fonts";
+@import "../sass-styles/sass-variables/colours";
+
+.App {
+  text-align: center;
+  background: linear-gradient(168.55deg, #d6eadf 0%, #edede8 50.00%, #e2ece9 100%);
+  @media screen and (max-width: $tablet-screen-size) {
+    background: linear-gradient(168.55deg, #e8fffd 0%, #ffffec 50.00%, #f1fff8 100%);
+  }
+
+  ;
+  @media screen and (max-width: $phone-screen-size) {
+    background: linear-gradient(168.55deg, #f1fff8 0%, #ffffec 50.00%, #edfffa 100%);
+  };
+}

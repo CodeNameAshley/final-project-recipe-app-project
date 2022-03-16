@@ -1,13 +1,31 @@
-/* eslint-disable no-bitwise */
+/* eslint-disable max-len */
+/* eslint-disable object-curly-newline */
+/* eslint-disable react/jsx-indent */
+/* eslint-disable indent */
+/* eslint-disable array-callback-return */
 import React from "react";
 import PropTypes from "prop-types";
 import "../sass-styles/recipeinfo.scss";
 import NavBar from "./NavBar";
+import {
+  formatDiets,
+  formatDishTypes,
+  formatPairingDescription,
+  formatPairingMatch,
+  formatPairedWines,
+  formatPrice,
+  formatServings,
+  formatTime,
+  formatUnit,
+  removeTags,
+} from "../formatting-functions/formattingFunctions";
 
 export default function RecipeInfo({ result }) {
   const {
     cheap,
     dairyFree,
+    diets,
+    dishTypes,
     extendedIngredients,
     furtherInstructions,
     glutenFree,
@@ -21,94 +39,103 @@ export default function RecipeInfo({ result }) {
     title,
     vegan,
     vegetarian,
+    winePairing,
   } = result;
 
   const yes = "🟢";
   const no = "🔴";
 
-  const removeTags = (string) => {
-    return string
-      .replace(/<[^>]*>/g, " ")
-      .replace(/\s{2,}/g, " ")
-      .trim();
-  };
-  // const structuredSummary = summary.replace(/(<([^>]+)>)/gi, "");
-
-  const price = `${(Math.floor(pricePerServing) / 10) ^ 0}p`;
-
-  const formatTime = (time) => {
-    const hours = time / 60;
-    const timeInHours = Math.floor(hours);
-    const minutes = (hours - timeInHours) * 60;
-    const timeInMinutes = Math.round(minutes);
-
-    let servingTime;
-
-    if (timeInHours === 0) {
-      servingTime = `ready in: ${timeInMinutes} mins`;
-    } else if (timeInMinutes === 0) {
-      servingTime = `ready in: ${timeInHours} hours`;
-    } else {
-      servingTime = `ready in: ${timeInHours} hours and ${timeInMinutes} mins`;
-    }
-
-    return servingTime;
-  };
-
   return (
     <div className="recipe-info">
-      <div className="recipe-info__background">
-        <NavBar />
+      <NavBar />
+      <div>
         <div>
-          <div>
-            <div className="recipe-info__details">
-              <div className="recipe-info__title">{title.toLowerCase()}</div>
-              <img className="recipe-info__image" src={image} alt={title} />
-            </div>
+          <div className="recipe-info__title-image">
+            <div className="recipe-info__title">{title.toLowerCase()}</div>
+            <img className="recipe-info__image" src={image} alt={title} />
+          </div>
 
-            <div className="recipe-info__key-facts">
-              <p>cheap: {cheap && cheap ? yes : no}</p>
-              <p>dairy free: {dairyFree && dairyFree ? yes : no}</p>
-              <p>
-                number of ingredients:
-                {extendedIngredients && extendedIngredients.length}
-              </p>
-              <p>gluten free: {glutenFree && glutenFree ? yes : no}</p>
-              <p>price: {price}</p>
-              <p>{formatTime(readyInMinutes)}</p>
-              <p>serving: {servings}</p>
-              <p>sustainable: {sustainable && sustainable ? yes : no}</p>
-              <p>vegan: {vegan && vegan ? yes : no}</p>
-              <p>vegetarian: {vegetarian && vegetarian ? yes : no}</p>
-            </div>
+          <h1>key points</h1>
+          <div className="recipe-info__key-facts">
+            <p>💲 cheap: {cheap && cheap ? yes : no}</p>
+            <p>🧀 dairy free: {dairyFree && dairyFree ? yes : no}</p>
+            <p>{diets && formatDiets(diets)}</p>
+            <p>
+              📜 no. of ingredients:{" "}
+              {extendedIngredients && extendedIngredients.length} items
+            </p>
+            <p>🌾 gluten free: {glutenFree && glutenFree ? yes : no}</p>
+            <p>{formatPrice(pricePerServing)}</p>
+            <p>{formatTime(readyInMinutes)}</p>
+            <p>{formatServings(servings)}</p>
+            <p>🌳 sustainable: {sustainable && sustainable ? yes : no}</p>
+            <p>🐄 vegan: {vegan && vegan ? yes : no}</p>
+            <p>🌱 vegetarian: {vegetarian && vegetarian ? yes : no}</p>
+          </div>
 
-            <h1>summary</h1>
-            <div className="recipe-info__summary">
-              {summary && removeTags(summary)}
-            </div>
-            <h1 className="recipe-info__header">
-              {`follow these ${
-                furtherInstructions && furtherInstructions.length
-              } steps below`}
-            </h1>
-            <div className="recipe-info__steps">
-              <ol>
-                {furtherInstructions &&
-                  furtherInstructions.map((instruction) => {
+          <div className="">
+            <h1>ingredients</h1>
+            <div className="recipe-info__ingredients-list">
+              <ul>
+                {extendedIngredients &&
+                  extendedIngredients.map((ingredient) => {
                     return (
-                      <li key={instruction.step}>
-                        {/* {instruction.number} */}
-                        {instruction.step}
+                      <li key={ingredient.id}>
+                        ◾{ingredient.name}: {Math.ceil(ingredient.amount)}{" "}
+                        {ingredient.unit
+                          ? ingredient.unit.toLowerCase()
+                          : formatUnit(ingredient.amount)}
                       </li>
                     );
                   })}
-              </ol>
+              </ul>
             </div>
-            <div className="recipe-info__instructions">
-              <h1> full instructions </h1>
-              <div className="recipe-info__fullText">
-                {removeTags(instructions)}
+          </div>
+
+          <h1>summary</h1>
+          <div className="recipe-info__summary">
+            {summary && removeTags(summary)}
+          </div>
+          <h1 className="recipe-info__header">
+            {`follow these ${
+              furtherInstructions && furtherInstructions.length
+            } steps below`}
+          </h1>
+          <div className="recipe-info__steps">
+            <ol>
+              {furtherInstructions &&
+                furtherInstructions.map((instruction) => {
+                  return <li key={instruction.step}>{instruction.step}</li>;
+                })}
+            </ol>
+          </div>
+
+          <div>
+            <h1>dish types and wine pairing</h1>
+            <div className="recipe-info__dish-wine">
+              <div>
+                <p>
+                  {winePairing && formatPairedWines(winePairing.pairedWines)}
+                </p>
+                <p>
+                  {winePairing &&
+                    formatPairingDescription(winePairing.pairingText)}
+                </p>
+                <p>
+                  {winePairing &&
+                    formatPairingMatch(winePairing.productMatches)}
+                </p>
               </div>
+              <div className="recipe-info__dish-types">
+                <p>{dishTypes && formatDishTypes(dishTypes)}</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="recipe-info__instructions">
+            <h1>full instructions</h1>
+            <div className="recipe-info__fullText">
+              {removeTags(instructions)}
             </div>
           </div>
         </div>
@@ -121,10 +148,11 @@ RecipeInfo.propTypes = {
   result: PropTypes.shape({
     cheap: PropTypes.bool,
     dairyFree: PropTypes.bool,
-    extendedIngredients: PropTypes.arrayOf(PropTypes.string),
+    diets: PropTypes.arrayOf(PropTypes.string),
+    dishTypes: PropTypes.arrayOf(PropTypes.string),
+    extendedIngredients: PropTypes.arrayOf(PropTypes.shape()),
     furtherInstructions: PropTypes.arrayOf(
       PropTypes.shape({
-        // number: PropTypes.number,
         step: PropTypes.string,
       })
     ),
@@ -139,5 +167,16 @@ RecipeInfo.propTypes = {
     title: PropTypes.string,
     vegan: PropTypes.bool,
     vegetarian: PropTypes.bool,
+    winePairing: PropTypes.shape({
+      pairedWines: PropTypes.arrayOf(PropTypes.string),
+      pairingText: PropTypes.string,
+      productMatches: PropTypes.arrayOf(
+        PropTypes.shape({
+          title: PropTypes.string,
+          description: PropTypes.string,
+          price: PropTypes.string,
+        })
+      ),
+    }),
   }).isRequired,
 };

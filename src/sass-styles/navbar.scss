@@ -7,31 +7,36 @@
     text-align: center;
     justify-content: center;
     width: 100%;
-    height: auto;
+    height: 79px;
     background-color: $secondary-background-colour;
     display: inline-flex;
-    margin: 0 auto;
-}
-
-.nav-link__foodle{
-    color: $logo-font-colour;
+    margin: auto;
     font-family: $palanquin-dark;
-    font-weight: $bold;
-    font-size: $logo-font-size;
-    line-height: auto;
-
+    border-bottom: solid 5px $secondary-font-colour;
+        img{
+            padding-top: 2.5px;
+            max-width: 200px;
+            max-height: 100px;
+        }
+        .back{
+            left: 10px;
+            top: 13px;
+            position: absolute;
+            max-height:50px;
+            min-height: 50px;
+            vertical-align: baseline;
+        }
 }
 
-.back{
-    font-size: 20px;
-    height: 70px;
-    width:70px;
-    background-color: $backButton-colour;
-    border-radius: 50px;
-    text-align: center;
-    justify-content: center;
-    position: absolute;
-    left: 50px;
-    top: 10px;
+// .navBar__foodle{
+//     color: $logo-font-colour;
+//     font-weight: $bold;
+//     font-size: $logo-font-size;
+//     line-height: normal;
+// }
 
-}
+// .navBar__tagline{
+//     color: $secondary-font-colour;
+//     font-size: 30px;
+//     line-height: 80%;
+// }
