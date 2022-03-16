@@ -33,13 +33,13 @@ function App() {
               id: recipe.id,
               title: recipe.title,
               image: recipe.image,
-              dairyFree: recipe.dairyFree.toString(),
-              glutenFree: recipe.glutenFree.toString(),
+              dairyFree: recipe.dairyFree,
+              glutenFree: recipe.glutenFree,
               occasions: recipe.occasions,
               readyInMinutes: recipe.readyInMinutes,
               pricePerServing: recipe.pricePerServing,
-              vegan: recipe.vegan.toString(),
-              vegetarian: recipe.vegetarian.toString(),
+              vegan: recipe.vegan,
+              vegetarian: recipe.vegetarian,
             };
             return basicInfo;
           });

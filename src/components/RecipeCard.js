@@ -66,24 +66,6 @@ export default function RecipeCard({
     }
   };
 
-  let dietaryInfo;
-
-  if (vegetarian && glutenFree && dairyFree) {
-    dietaryInfo = "🌱vegetarian, 🌾gluten free & 🧀dairy free";
-  } else if (vegetarian && dairyFree) {
-    dietaryInfo = "🌱vegetarian & 🧀dairy free";
-  } else if (vegetarian && glutenFree) {
-    dietaryInfo = "🌱vegetarian & 🌾gluten free";
-  } else if (vegetarian) {
-    dietaryInfo = "🌱vegetarian";
-  } else if (vegan && glutenFree) {
-    dietaryInfo = "🐄vegan & 🌾gluten free";
-  } else if (vegan) {
-    dietaryInfo = "🐄vegan";
-  } else {
-    dietaryInfo = null;
-  }
-
   return (
     <div
       className="recipe-card__main"
@@ -98,7 +80,12 @@ export default function RecipeCard({
           <img className="recipe-card__image" src={image} alt={title} />
           <div className="recipe-card__title">{title.toLowerCase()}</div>
           <div className="recipe-card__extra-info">
-            <p>{dietaryInfo}</p>
+            <p>
+              {vegetarian && vegetarian ? "🌱vegetarian" : null}{" "}
+              {vegan && vegan ? "🐄vegan" : null}{" "}
+              {dairyFree && dairyFree ? "🧀dairy free" : null}{" "}
+              {glutenFree && glutenFree ? "🌾gluten free" : null}
+            </p>
             <p>{formatTime(readyInMinutes)}</p>
             <p>{formatPrice(pricePerServing)}</p>
             <p>{formatCuisines(cuisines)}</p>
@@ -114,8 +101,8 @@ export default function RecipeCard({
 
 RecipeCard.propTypes = {
   cuisines: PropTypes.arrayOf(PropTypes.string),
-  dairyFree: PropTypes.string,
-  glutenFree: PropTypes.string,
+  dairyFree: PropTypes.bool,
+  glutenFree: PropTypes.bool,
   id: PropTypes.number.isRequired,
   image: PropTypes.string.isRequired,
   missedIngredientCount: PropTypes.number,
@@ -125,19 +112,19 @@ RecipeCard.propTypes = {
   selectRecipe: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
   usedIngredientCount: PropTypes.number,
-  vegan: PropTypes.string,
-  vegetarian: PropTypes.string,
+  vegan: PropTypes.bool,
+  vegetarian: PropTypes.bool,
 };
 
 RecipeCard.defaultProps = {
   cuisines: [],
-  dairyFree: "",
-  glutenFree: "",
+  dairyFree: null,
+  glutenFree: null,
   missedIngredientCount: 0,
   occasions: [],
   pricePerServing: 0,
   readyInMinutes: 0,
   usedIngredientCount: 0,
-  vegan: "",
-  vegetarian: "",
+  vegan: null,
+  vegetarian: null,
 };

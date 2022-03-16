@@ -33,6 +33,7 @@ export default function SearchBar({ setSearchResults }) {
       if (!ingredients.includes(value)) {
         setIngredients([...ingredients, value]);
       }
+      document.getElementById("inputField").focus();
       setValue("");
     }
   };
@@ -78,6 +79,7 @@ export default function SearchBar({ setSearchResults }) {
         <form className="search-form" onSubmit={handleSubmit}>
           <div className="search-bar__form-addButton">
             <input
+              id="inputField"
               className="search-input"
               disabled={loading}
               value={value}
