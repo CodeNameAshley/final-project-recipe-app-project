@@ -13,7 +13,7 @@ export default function SearchResults({ results, selectRecipe }) {
     <div className="search-results__main">
       <header className="search-results__header">{headerMessage}</header>
       <div className="search-results__card">
-        {results && results.length === 0 ? (
+        {results.length === 0 ? (
           <p>{noResultsMessage}</p>
         ) : (
           results.map((recipe) => {
