@@ -6,12 +6,15 @@ import replacementImage from "../images/replacement-image.png";
 
 export default function SearchResults({ results, selectRecipe }) {
   console.log(results);
-  const headerMessage = "check out these recipes below!";
+  const headerMessage = "🌟check out these recipes below!🌟";
+  const randomHeaderMessage = "✨fancy trying something new?✨";
   const noResultsMessage = "Oh no there are no recipes in our cookbook!";
 
   return (
     <div className="search-results__main">
-      <header className="search-results__header">{headerMessage}</header>
+      <header className="search-results__header">
+        {results && results.length <= 6 ? randomHeaderMessage : headerMessage}
+      </header>
       <div className="search-results__card">
         {results.length === 0 ? (
           <p>{noResultsMessage}</p>

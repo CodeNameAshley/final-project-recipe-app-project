@@ -3,19 +3,19 @@ $search-bar-colour: rgb(255, 255, 255, 0.85);
 
 // Search Button
 $search-button-colour: rgba(182, 215, 190, 0.9);
+$search-button-enabled: rgba(182, 215, 190, 0.9);
+$search-button-disabled: rgba(182, 215, 190, 0.6);
+
 
 // NavBar
 $backButton-colour: #ADE2C8;
-
-// Logo Variables 
-$logo-font-colour: #2C6E49;
-
 
 // Normal Font Variables
 $primary-font-colour: #2C6E49;
 $secondary-font-colour:#368558;
 $header-font-colour: #2d6a4f;
 $title-font-colour: #245742;
+$disabled-font-colour: rgba(236, 236, 236, 0.5);
 
 // Background
 $secondary-background-colour: white;

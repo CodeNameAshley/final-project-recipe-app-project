@@ -18,7 +18,6 @@ export default function SearchBar({ setSearchResults }) {
         setLoading(true);
         const recipes = await GetRecipeList(ingredients);
         setSearchResults(recipes);
-        console.log(recipes);
       } else {
         alert("min 5 ingredients");
       }
@@ -50,14 +49,6 @@ export default function SearchBar({ setSearchResults }) {
       <div className="search-chip-div">
         <div className="chip__main">
           <div className="chip-and-button">
-            {loading && (
-              <ReactBootStrap.Spinner
-                animation="border"
-                size="sm"
-                variant="success"
-                className="search-bar__loading"
-              />
-            )}
             {ingredients.map((ingredient, index) => {
               return (
                 <div className="chipButton" key={ingredient}>
@@ -105,10 +96,22 @@ export default function SearchBar({ setSearchResults }) {
             </button>
           </div>
           <button
-            className="submitButton"
+            className={`${
+              ingredients.length >= 5
+                ? "searchButton__active"
+                : "searchButton__disabled"
+            }`}
             type="submit"
             onSubmit={handleSubmit}
           >
+            {loading && (
+              <ReactBootStrap.Spinner
+                animation="border"
+                size="sm"
+                variant="success"
+                className="search-bar__loading"
+              />
+            )}
             Search
           </button>
         </form>

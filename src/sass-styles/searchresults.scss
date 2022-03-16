@@ -5,14 +5,25 @@
 
 .search-results__main{
     font-family: $palanquin-dark;
-    margin-left: 10%;
-    margin-right: 10%;
+    margin-left: 100px;
+    margin-right: 100px;
     
     .search-results__header{
         color: $header-font-colour;
         font-weight: $semi-bold-weight;
         font-size: $header-font-size;
         margin: 10px;
+        @media screen and (max-width: $tablet-screen-size) {
+            font-size: 40px;
+        }
+        @media screen and (max-width: $phone-screen-size) {
+            font-size: 23.5px;
+        }
+    }
+
+    @media screen and (max-width: $tablet-screen-size) {
+        margin-left: 20px;
+        margin-right: 20px;
     }
 }
 

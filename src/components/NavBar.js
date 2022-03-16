@@ -7,10 +7,10 @@ import backButton from "../images/back-button.png";
 export default function NavBar() {
   return (
     <div className="navBar__main">
-      <Link to="/">
+      <Link to="/" onClick={window.scrollTo(0, 0)}>
         <img src={backButton} className="back" alt="back button" />
       </Link>
-      <Link to="/">
+      <Link to="/" onClick={window.scrollTo(0, 0)}>
         <img src={logo} alt="foodle logo" />
       </Link>
     </div>

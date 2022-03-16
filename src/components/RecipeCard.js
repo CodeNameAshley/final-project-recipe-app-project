@@ -58,6 +58,7 @@ export default function RecipeCard({
           vegetarian: response.data.vegetarian,
           winePairing: response.data.winePairing,
         };
+        window.scrollTo(0, 0);
         return selectRecipe(details);
       });
     } catch (err) {

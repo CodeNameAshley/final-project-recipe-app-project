@@ -35,6 +35,13 @@
         vertical-align: center;
 
         max-width: 330px;
+
+        @media screen and (max-width: $tablet-screen-size) {
+            font-size: 20px;
+        };
+        @media screen and (max-width: $phone-screen-size) {
+            font-size: 25px;
+        }
         
     }
     .recipe-card__extra-info{
@@ -52,8 +59,11 @@
         max-width: 330px;
     
         z-index: 999;
+        @media screen and (max-width: $phone-screen-size) {
+            font-size: 18px;
+        }
     }
-
+    
 }
 
 

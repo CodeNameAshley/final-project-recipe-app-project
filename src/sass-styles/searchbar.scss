@@ -15,6 +15,9 @@
     justify-content: center;
     flex-direction: column;
     vertical-align: middle;
+    @media screen and (max-width: $tablet-screen-size) {
+        min-height: 300px;
+    }
 }
 
 .search-bar__loading{
@@ -25,33 +28,31 @@
 .search-chip-div{
     padding: 100px;
     font-family: $palanquin-dark;
-    font-size: 20px;
-    
+    font-size: $secondary-text-font-size;
+    @media screen and (max-width: $tablet-screen-size){
+        padding: 50px;
+        font-size: 20px;
+    }
+    @media screen and (max-width: $phone-screen-size) {
+        font-size: 20px;
+        padding: 2px;
+        vertical-align: center;
+    }
 }
 
 .chipButton{
     background-color: $search-bar-colour;
     display: inline-flex;
-    // padding: 10px;
     border-radius: 50px;
     margin: 10px;
     margin-bottom: 5px;
+    @media screen and (max-width: $tablet-screen-size) {
+        margin: 5px;
+    };
+    @media screen and (max-width: $phone-screen-size) {
+        margin: 2px;
+    };
 }
-
-// .chip__index{
-//     font-family: $palanquin-dark;
-//     font-weight: $semi-bold-weight;
-//     font-size: 25px;
-//     border: none;
-//     border-radius: 50px;
-//     height: 50px;
-//     width: 50px;
-//     background-color: $search-button-colour;
-//     color: $search-button-text-colour;
-//     text-align: center;
-//     align-items: center;
-//     align-self: center;
-// }
 
 .chip__ingredient{
     display: inline;
@@ -78,6 +79,29 @@
     text-align: center;
     align-items: center;
     align-self: center;
+    @media screen and (max-width: $tablet-screen-size) {
+        height: 35px;
+        width: 35px;
+        font-size: 20px;
+    }
+}
+
+.chip__delete:hover{
+    background-color: rgb(255, 170, 170);
+}
+
+.chip__delete:active{
+    background-color: rgb(255, 118, 118);
+}
+
+.search-form {
+    @media screen and (max-width: $tablet-screen-size) {
+        display: inline-block;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        position: relative;
+    }
 }
 
 .search-bar__form-addButton{
@@ -87,6 +111,20 @@
     outline: none;
     display: inline-flex;
     width: 70%;
+    @media screen and (max-width: $tablet-screen-size) {
+        width: 60%;
+        min-width: 450px;
+    }
+    @media screen and (max-width: $phone-screen-size) {
+        align-self: center;
+        justify-content: center;
+        margin-top: 15px;
+        margin-bottom: 10px;
+        max-width: 350px;
+        min-width: 350px;
+        padding: 10px;
+    }
+
 }
 
 .search-bar__add{
@@ -96,27 +134,41 @@
     border-radius: $search-border-radius;
 
     font-family: $palanquin-dark;
-    font-size: 22.5px;
+    font-size: $search-bar-font-size;
     font-weight: $bold;
-    color: $search-button-text-colour;
+    color: $primary-font-colour;
     text-align: center;
 
     width: 10%;
     min-width: 100px;
-    // padding: 5px;
-    // margin: auto;
     height: 92px;
 
     float: right;
     justify-content: center;
     align-items: center;
-
+    @media screen and (max-width: $tablet-screen-size) {
+        font-size: 25px;
+        height: 61.5px;
+        width: 5%;
+    }
+    @media screen and (max-width: $tablet-screen-size) {
+        font-size: 25px;
+        height: 62px;
+        width: auto;
+    }
+    
 }
 
+.search-bar__add:hover {
+    background-color: rgba(143, 209, 159, 0.9);
+}
+
+.search-bar__add:active{
+    background-color: rgba(140, 255, 169, 0.9);
+}
 .search-input{
     background-color: transparent;
     border: none;
-    // border-radius: $search-border-radius;
     outline: none;
 
     font-size: $search-bar-font-size;
@@ -126,25 +178,48 @@
     
     text-align: center;
     color: $secondary-font-colour;
-    height: $search-bar-height;   
+    height: $search-bar-height; 
+    @media screen and (max-width: $tablet-screen-size) {
+        height: 60px;
+        justify-content: center;
+        vertical-align: center;
+        align-items: center;
+        width: 100%;
+        font-size: 25px;
+        min-width: 40%;
+    }
+    @media screen and (max-width: $phone-screen-size) {
+        min-width: auto;
+    }
+    @media screen and (max-width: $phone-screen-size) {
+        min-width: 10px;
+    }
+      
 }
 
 ::placeholder{
     color:rgb(44, 110, 73, 0.6);
     font-weight: $semi-bold-weight;
     text-align: center;
+    @media screen and (max-width: $tablet-screen-size) {
+        font-size: 30px;
+        padding: 20px;
+    }
+    @media screen and (max-width: $tablet-screen-size) {
+        font-size: 24px;
+    }
 }
 
-.submitButton {
-    background-color: $search-button-colour;
+.searchButton__active{
+    background-color: $search-button-enabled;
 
     border: none;
     border-radius: $search-border-radius;
 
     font-family: $palanquin-dark;
-    font-size: 22.5px;
+    font-size: $search-bar-font-size;
     font-weight: $bold;
-    color: $search-button-text-colour;
+    color: $primary-font-colour;
     text-align: center;
 
     display: flex;
@@ -157,4 +232,58 @@
     margin: auto;
     margin-top: 10px;
     padding: 5px;    
+
+    transition-duration: 0.4s;
+    @media screen and (max-width: $tablet-screen-size) {
+        font-size: 25px;
+        min-width: 100px;
+    }
+
+    @media screen and (max-width: $phone-screen-size) {
+        margin-top: 0;
+    }
+}
+
+
+.searchButton__active:hover{
+    background-color: rgba(143, 209, 159, 0.9);
+}
+.searchButton-active:active {
+    background-color: rgba(140, 255, 169, 0.9);
+}
+
+
+
+.searchButton__disabled{
+    background-color: $search-button-disabled;
+
+    border: none;
+    border-radius: $search-border-radius;
+
+    font-family: $palanquin-dark;
+    font-size: $search-bar-font-size;
+    font-weight: $bold;
+    color: $disabled-font-colour;
+    text-align: center;
+
+    display: flex;
+    justify-content: center;
+    position: relative;
+
+    width: 15%;
+    height: auto;
+
+    margin: auto;
+    margin-top: 10px;
+    padding: 5px;
+
+    cursor: not-allowed;
+
+    @media screen and (max-width: $tablet-screen-size) {
+        font-size: 25px;
+        min-width: 100px;
+    }
+    @media screen and (max-width: $phone-screen-size) {
+        margin-top: 0;
+    }
 }

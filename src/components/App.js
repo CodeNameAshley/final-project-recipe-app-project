@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 // import * as from "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
-import "../styles/App.css";
+import "../styles/App.scss";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import SearchBar from "./SearchBar";
 import SearchResults from "./SearchResults";
@@ -12,9 +12,10 @@ import ReplacementImage from "../images/replacement-image.png";
 function App() {
   const [searchResults, setSearchResults] = useState(null);
   const [selectedRecipe, setSelectedRecipe] = useState({
-    title: "test title",
+    title: "oh no! It seems like the title didn't load!",
     image: ReplacementImage,
-    instructions: "test instructions",
+    instructions: "the robots have lost all information!",
+    summary: "the summary has disappeared",
   });
 
   const [randomRecipe, setRandomRecipe] = useState([]);
@@ -23,7 +24,7 @@ function App() {
     try {
       axios
         .get(
-          `https://api.spoonacular.com/recipes/random?number=8&apiKey=${process.env.REACT_APP_API_KEY}`
+          `https://api.spoonacular.com/recipes/random?number=6&apiKey=${process.env.REACT_APP_API_KEY}`
         )
         .then((response) => {
           const randomResults = response.data.recipes.map((recipe) => {
