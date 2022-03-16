@@ -4,17 +4,18 @@
 
 
 .search-results__main{
+    font-family: $palanquin-dark;
     margin-left: 10%;
     margin-right: 10%;
+    
+    .search-results__header{
+        color: $header-font-colour;
+        font-weight: $semi-bold-weight;
+        font-size: $header-font-size;
+        margin: 10px;
+    }
 }
 
-.search-results__header{
-    color: $header-font-colour;
-    font-family: $palanquin-dark;
-    font-weight: $medium-weight;
-    font-size: $header-font-size;
-    padding: 20px;
-}
 
 .search-results__card{
     display: flex;

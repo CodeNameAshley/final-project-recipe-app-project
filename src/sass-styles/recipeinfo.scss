@@ -3,76 +3,66 @@
 @import "./sass-variables/colours";
 
 .recipe-info {
-    background: url("../images/chopping-board-bg.jpg");
+    background: url("../images/chopping-board-bg.png");
     height: 100%;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     font-family: $palanquin-dark;
         h1 {
-            font-size: $RI-font-size;
+            font-size: $header-font-size;
             color: $header-font-colour;
             font-weight: $semi-bold-weight;
         }
 }
 
 
-.recipe-info__details {
-    // padding-left: 100px;
-    // padding-right: 100px;
+.recipe-info__title-image {
     margin-left: 100px;
     margin-right: 100px;
     display: flex;
     justify-content: center;
     flex-flow: row wrap;
     padding-top: 50px;
+    .recipe-info__title {
+        font-size: $RI-title-size;
+        font-weight: $bold;
+        color: $title-font-colour;
+        justify-content: center;
+        align-items: center;
+        vertical-align: middle;
+        text-align: center;
+        min-width: 550px;
+        max-width: 550px;
+        min-height: 350px;
+        max-height: 400px;
+        background: $recipeInfo-div-background;
+        border-radius: $text-border-radius;
+        display: flex;
+        margin: 10px;
+        padding: 10px;
+    }
+    .recipe-info__image {
+        margin: 10px;
+        min-width: 556px;
+        max-width: 556px;
+        border-radius: $text-border-radius;
+    }
 }
 
-.recipe-info__title {
-    font-size: $RI-title-size;
-    font-weight: $bold;
-    color: $title-font-colour;
-    justify-content: center;
-    align-items: center;
-    vertical-align: middle;
-    text-align: center;
-    max-width: 556px ;
-    min-width: 556px;
-    min-height: 370px ;
-    background: $recipeInfo-div-background;
-    border-radius: $text-border-radius;
-    margin: 10px;
-    padding-left: 10px;
-    padding-right: 10px;
-    display: flex;
-}
 
-.recipe-info__image {
-    margin: 20px;
-    min-width: 556px;
-    max-width: 556px;
-    border-radius: $text-border-radius;
-}
 
 .recipe-info__key-facts,
 .recipe-info__ingredients-list,
 .recipe-info__dish-wine{
-    border-radius: 25px;
-    font-size: 25px;
+    border-radius: $text-border-radius;
+    font-size: $RI-normal-font-size;
     text-align: center;
-    padding-right: 50px;
-    padding-left: 50px;
-    padding-top: 10px;
-    // margin-top: 100px;
-    // margin-left: 200px;
-    // margin-right: 200px;
-    padding-right: 50px;
-    padding-left: 50px;
-    padding-top: 10px;
-    margin-left: 125px;
-    margin-right: 125px;
+    padding: 10px;
+    margin-left: 200px;
+    margin-right: 200px;
     background: $recipeInfo-div-background;
-    color: $normal-font-colour;
+    color: $secondary-font-colour;
     display: flex;
     flex-direction: row;
     flex-flow: wrap;
@@ -92,44 +82,38 @@
 
 .recipe-info__header{
     color: $header-font-colour;
-    font-size: $recipeInfo-header-size;
+    font-size: $header-font-size;
 }
 
 .recipe-info__summary{
-    border-radius: 50px;
-    font-size: 25px;
+    border-radius: $text-border-radius;
+    font-size: $RI-normal-font-size;
     text-align: center;
-    padding-right: 50px;
-    padding-left: 50px;
-    padding-top: 10px;
-    margin-left: 150px;
-    margin-right: 150px;
+    padding: 20px;
+    margin-left: 200px;
+    margin-right: 200px;
     background: $recipeInfo-div-background;
-    color: $normal-font-colour;
+    color: $secondary-font-colour;
+}
+.recipe-info__steps{
+    border-radius: $text-border-radius;
+    font-size: $RI-normal-font-size;
+    text-align: left;
+    padding: 10px;
+    margin-left: 200px;
+    margin-right: 200px;
+    background: $recipeInfo-div-background;
+    color: $secondary-font-colour;
 }
 
-.recipe-info__steps{
-    border-radius: 50px;
-    font-size: 25px;
-    text-align: left;
-    padding-right: 50px;
-    padding-left: 50px;
-    padding-top: 10px;
-    margin-left: 125px;
-    margin-right: 125px;
-    background: $recipeInfo-div-background;
-    color: $normal-font-colour;
-}
 
 .recipe-info__fullText {
     border-radius: 50px 50px 0px 0px;
-    font-size: 25px;
+    font-size: $RI-normal-font-size;
     text-align: center;
-    padding-right: 50px;
-    padding-left: 50px;
-    padding-top: 10px;
-    margin-left: 125px;
-    margin-right: 125px;
+    padding: 20px;
+    margin-left: 200px;
+    margin-right: 200px;
     background: $recipeInfo-div-background;
-    color: $normal-font-colour;
+    color: $secondary-font-colour;
 }

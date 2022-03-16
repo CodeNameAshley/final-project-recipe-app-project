@@ -47,10 +47,17 @@ export default function SearchBar({ setSearchResults }) {
 
   return (
     <div className="search-bar__main">
-      {loading && <ReactBootStrap.Spinner animation="border" />}
       <div className="search-chip-div">
         <div className="chip__main">
           <div className="chip-and-button">
+            {loading && (
+              <ReactBootStrap.Spinner
+                animation="border"
+                size="sm"
+                variant="success"
+                className="search-bar__loading"
+              />
+            )}
             {ingredients.map((ingredient, index) => {
               return (
                 <div className="chipButton" key={ingredient}>

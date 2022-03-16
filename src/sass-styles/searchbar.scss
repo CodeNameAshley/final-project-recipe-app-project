@@ -14,8 +14,12 @@
 
     justify-content: center;
     flex-direction: column;
-    position: relative;
     vertical-align: middle;
+}
+
+.search-bar__loading{
+    align-items: center;
+    justify-content: center;
 }
 
 .search-chip-div{
@@ -24,11 +28,6 @@
     font-size: 20px;
     
 }
-
-// .chip__main{
-//     display: inline-flex;
-//     padding: 10px;
-// }
 
 .chipButton{
     background-color: $search-bar-colour;
@@ -60,7 +59,7 @@
     margin-left: 10px;
     margin-right: 10px;
     text-align: center;
-    color: $normal-font-colour;
+    color: $secondary-font-colour;
     align-items: center;
     align-self: center;
 
@@ -75,7 +74,7 @@
     height: 50px;
     width: 50px;
     background-color: $search-button-colour;
-    color: $normal-font-colour;
+    color: $secondary-font-colour;
     text-align: center;
     align-items: center;
     align-self: center;
@@ -126,7 +125,7 @@
     width: 100%;
     
     text-align: center;
-    color: $normal-font-colour;
+    color: $secondary-font-colour;
     height: $search-bar-height;   
 }
 

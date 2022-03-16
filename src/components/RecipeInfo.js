@@ -1,11 +1,24 @@
+/* eslint-disable max-len */
+/* eslint-disable object-curly-newline */
 /* eslint-disable react/jsx-indent */
 /* eslint-disable indent */
 /* eslint-disable array-callback-return */
-/* eslint-disable no-bitwise */
 import React from "react";
 import PropTypes from "prop-types";
 import "../sass-styles/recipeinfo.scss";
 import NavBar from "./NavBar";
+import {
+  formatDiets,
+  formatDishTypes,
+  formatPairingDescription,
+  formatPairingMatch,
+  formatPairedWines,
+  formatPrice,
+  formatServings,
+  formatTime,
+  formatUnit,
+  removeTags,
+} from "../formatting-functions/formattingFunctions";
 
 export default function RecipeInfo({ result }) {
   const {
@@ -29,207 +42,100 @@ export default function RecipeInfo({ result }) {
     winePairing,
   } = result;
 
-  console.log(winePairing);
-
   const yes = "🟢";
   const no = "🔴";
 
-  const removeTags = (string) => {
-    return string
-      .replace(/<[^>]*>/g, " ")
-      .replace(/\s{2,}/g, " ")
-      .trim();
-  };
-
-  const formatDishTypes = (dish) => {
-    let formattedDishTypes;
-
-    if (dish.length === 1) {
-      formattedDishTypes = `🍽️dish type: ${dish.toString()}`;
-    } else if (dish.length > 1) {
-      formattedDishTypes = `dish type: ${dish.join(", ")}`;
-    } else {
-      formattedDishTypes = null;
-    }
-
-    return formattedDishTypes;
-  };
-
-  const formatPairingDescription = (wineString) => {
-    let formattedPairingDesc;
-    if (wineString) {
-      formattedPairingDesc = `📝pairing description: ${wineString}`;
-    } else {
-      formattedPairingDesc = null;
-    }
-    return formattedPairingDesc;
-  };
-
-  const formatPairingMatch = (matchArray) => {
-    let formattedPairingMatch;
-    if (matchArray) {
-      matchArray.map((match) => {
-        const matchInfo = {
-          description: match.description,
-          price: match.price,
-          title: match.title,
-        };
-        formattedPairingMatch = `title: ${matchInfo.title}, price: ${matchInfo.price}, description ${matchInfo.description}`;
-      });
-    } else {
-      formattedPairingMatch = null;
-    }
-    return formattedPairingMatch;
-  };
-
-  const formatPairedWines = (winesArray) => {
-    let formattedWines;
-    if (winesArray && winesArray.length === 1) {
-      formattedWines = `🍾paired wines: ${winesArray.toString()}`;
-    } else if (winesArray && winesArray.length > 1) {
-      formattedWines = `🍾paired wines: ${winesArray.join(", ")}`;
-    } else {
-      formattedWines = null;
-    }
-    return formattedWines;
-  };
-
-  const formatPrice = (price) => {
-    const finalPrice = Math.round(price);
-    let formattedPrice;
-    if (finalPrice > 99) {
-      formattedPrice = `£${(finalPrice / 100).toFixed(2)}`;
-    } else if (finalPrice <= 99 && finalPrice !== 0) {
-      formattedPrice = `0.${finalPrice}p`;
-    } else {
-      formattedPrice = null;
-    }
-    return formattedPrice;
-  };
-
-  const formatTime = (time) => {
-    const hours = time / 60;
-    const timeInHours = Math.floor(hours);
-    const minutes = (hours - timeInHours) * 60;
-    const timeInMinutes = Math.round(minutes);
-
-    let servingTime;
-
-    if (timeInHours === 0) {
-      servingTime = `ready in: ${timeInMinutes} mins`;
-    } else if (timeInMinutes === 0 && timeInHours === 1) {
-      servingTime = `ready in: ${timeInHours} hour`;
-    } else if (timeInMinutes === 0) {
-      servingTime = `ready in: ${timeInHours} hours`;
-    } else {
-      servingTime = `ready in: ${timeInHours} hours and ${timeInMinutes} mins`;
-    }
-
-    return servingTime;
-  };
-
-  const formatUnit = (unit) => {
-    let formattedUnit;
-    if (unit > 1) {
-      formattedUnit = "pieces";
-    } else if (unit === 1) {
-      formattedUnit = "piece";
-    } else {
-      formattedUnit = null;
-    }
-
-    return formattedUnit;
-  };
-
   return (
     <div className="recipe-info">
-      <div className="recipe-info__background">
-        <NavBar />
+      <NavBar />
+      <div>
         <div>
-          <div>
-            <div className="recipe-info__details">
-              <div className="recipe-info__title">{title.toLowerCase()}</div>
-              <img className="recipe-info__image" src={image} alt={title} />
-            </div>
+          <div className="recipe-info__title-image">
+            <div className="recipe-info__title">{title.toLowerCase()}</div>
+            <img className="recipe-info__image" src={image} alt={title} />
+          </div>
 
-            <h1>key points</h1>
-            <div className="recipe-info__key-facts">
-              <p>💲 cheap: {cheap && cheap ? yes : no}</p>
-              <p>🧀 dairy free: {dairyFree && dairyFree ? yes : no}</p>
-              <p>🥗 diets: {diets && diets.join(", ")}</p>
-              <p>
-                📜 no. of ingredients:{" "}
-                {extendedIngredients && extendedIngredients.length} items
-              </p>
-              <p>🌾 gluten free: {glutenFree && glutenFree ? yes : no}</p>
-              <p>💰 price: {formatPrice(pricePerServing)}/serving</p>
-              <p>⏲️{formatTime(readyInMinutes)}</p>
-              <p>👨‍👩‍👧‍👦 serves: {servings} people</p>
-              <p>🌳 sustainable: {sustainable && sustainable ? yes : no}</p>
-              <p>🐄 vegan: {vegan && vegan ? yes : no}</p>
-              <p>🌱 vegetarian: {vegetarian && vegetarian ? yes : no}</p>
-            </div>
+          <h1>key points</h1>
+          <div className="recipe-info__key-facts">
+            <p>💲 cheap: {cheap && cheap ? yes : no}</p>
+            <p>🧀 dairy free: {dairyFree && dairyFree ? yes : no}</p>
+            <p>{diets && formatDiets(diets)}</p>
+            <p>
+              📜 no. of ingredients:{" "}
+              {extendedIngredients && extendedIngredients.length} items
+            </p>
+            <p>🌾 gluten free: {glutenFree && glutenFree ? yes : no}</p>
+            <p>{formatPrice(pricePerServing)}</p>
+            <p>{formatTime(readyInMinutes)}</p>
+            <p>{formatServings(servings)}</p>
+            <p>🌳 sustainable: {sustainable && sustainable ? yes : no}</p>
+            <p>🐄 vegan: {vegan && vegan ? yes : no}</p>
+            <p>🌱 vegetarian: {vegetarian && vegetarian ? yes : no}</p>
+          </div>
 
-            <div className="">
-              <h1>ingredients</h1>
-              <div className="recipe-info__ingredients-list">
-                <ul>
-                  {extendedIngredients &&
-                    extendedIngredients.map((ingredient) => {
-                      return (
-                        <li key={ingredient.id}>
-                          {/* {instruction.number} */}
-                          {ingredient.name}: {Math.ceil(ingredient.amount)}{" "}
-                          {ingredient.unit
-                            ? ingredient.unit.toLowerCase()
-                            : formatUnit(ingredient.amount)}
-                        </li>
-                      );
-                    })}
-                </ul>
-              </div>
-            </div>
-
-            <h1>summary</h1>
-            <div className="recipe-info__summary">
-              {summary && removeTags(summary)}
-            </div>
-            <h1 className="recipe-info__header">
-              {`follow these ${
-                furtherInstructions && furtherInstructions.length
-              } steps below`}
-            </h1>
-            <div className="recipe-info__steps">
-              <ol>
-                {furtherInstructions &&
-                  furtherInstructions.map((instruction) => {
-                    return <li key={instruction.step}>{instruction.step}</li>;
+          <div className="">
+            <h1>ingredients</h1>
+            <div className="recipe-info__ingredients-list">
+              <ul>
+                {extendedIngredients &&
+                  extendedIngredients.map((ingredient) => {
+                    return (
+                      <li key={ingredient.id}>
+                        ◾{ingredient.name}: {Math.ceil(ingredient.amount)}{" "}
+                        {ingredient.unit
+                          ? ingredient.unit.toLowerCase()
+                          : formatUnit(ingredient.amount)}
+                      </li>
+                    );
                   })}
-              </ol>
+              </ul>
             </div>
+          </div>
 
-            <div>
-              <h1>dish types and wine pairing</h1>
-              <div className="recipe-info__dish-wine">
-                <div>
+          <h1>summary</h1>
+          <div className="recipe-info__summary">
+            {summary && removeTags(summary)}
+          </div>
+          <h1 className="recipe-info__header">
+            {`follow these ${
+              furtherInstructions && furtherInstructions.length
+            } steps below`}
+          </h1>
+          <div className="recipe-info__steps">
+            <ol>
+              {furtherInstructions &&
+                furtherInstructions.map((instruction) => {
+                  return <li key={instruction.step}>{instruction.step}</li>;
+                })}
+            </ol>
+          </div>
+
+          <div>
+            <h1>dish types and wine pairing</h1>
+            <div className="recipe-info__dish-wine">
+              <div>
+                <p>
                   {winePairing && formatPairedWines(winePairing.pairedWines)}
-                  <br />
+                </p>
+                <p>
                   {winePairing &&
                     formatPairingDescription(winePairing.pairingText)}
-                  <br />
-                  {winePairing & formatPairingMatch(winePairing)}
-                </div>
-                <div className="recipe-info__dish-types">
-                  {dishTypes && formatDishTypes(dishTypes)}
-                </div>
+                </p>
+                <p>
+                  {winePairing &&
+                    formatPairingMatch(winePairing.productMatches)}
+                </p>
+              </div>
+              <div className="recipe-info__dish-types">
+                <p>{dishTypes && formatDishTypes(dishTypes)}</p>
               </div>
             </div>
+          </div>
 
-            <div className="recipe-info__instructions">
-              <h1> full instructions </h1>
-              <div className="recipe-info__fullText">
-                {removeTags(instructions)}
-              </div>
+          <div className="recipe-info__instructions">
+            <h1>full instructions</h1>
+            <div className="recipe-info__fullText">
+              {removeTags(instructions)}
             </div>
           </div>
         </div>

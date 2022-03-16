@@ -1,3 +1,4 @@
+/* eslint-disable object-curly-newline */
 /* eslint-disable array-callback-return */
 /* eslint-disable no-unused-expressions */
 /* eslint-disable no-bitwise */
@@ -6,6 +7,14 @@ import PropTypes, { number } from "prop-types";
 import "../sass-styles/recipecard.scss";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import {
+  formatCuisines,
+  formatMissedIngredients,
+  formatOccasions,
+  formatPrice,
+  formatTime,
+  formatUsedIngredients,
+} from "../formatting-functions/formattingFunctions";
 
 export default function RecipeCard({
   cuisines,
@@ -56,16 +65,6 @@ export default function RecipeCard({
     }
   };
 
-  const formatCuisines = (cuisine) => {
-    let formattedCuisines;
-    if (cuisine.length >= 1) {
-      formattedCuisines = `🗺️cuisines: ${cuisine.join(", ")}`;
-    } else if (cuisine.length < 1) {
-      formattedCuisines = null;
-    }
-    return formattedCuisines;
-  };
-
   let dietaryInfo;
 
   if (vegetarian && glutenFree && dairyFree) {
@@ -83,75 +82,6 @@ export default function RecipeCard({
   } else {
     dietaryInfo = null;
   }
-
-  const formatMissedIngredients = (missedIngredient) => {
-    let formattedIngredient;
-    if (missedIngredient > 1) {
-      formattedIngredient = `🛒missed ingredient: ${missedIngredient} items`;
-    } else if (missedIngredient === 1) {
-      formattedIngredient = `🛒missed ingredient: ${missedIngredient} item`;
-    } else {
-      formattedIngredient = null;
-    }
-
-    return formattedIngredient;
-  };
-
-  const formatOccasions = (occasion) => {
-    let formattedOccasion;
-    if (occasion.length >= 1) {
-      formattedOccasion = `🎉 occasion: ${occasions.join(", ")}`;
-    } else if (occasion.length < 1) {
-      formattedOccasion = null;
-    }
-    return formattedOccasion;
-  };
-
-  const formatPrice = (price) => {
-    const finalPrice = Math.round(price);
-    let formattedPrice;
-    if (finalPrice > 99) {
-      formattedPrice = `💰price per serving: £${(finalPrice / 100).toFixed(2)}`;
-    } else if (finalPrice <= 99 && finalPrice !== 0) {
-      formattedPrice = `💰price per serving: 0.${finalPrice}p`;
-    } else {
-      formattedPrice = null;
-    }
-    return formattedPrice;
-  };
-
-  const formatTime = (time) => {
-    const hours = time / 60;
-    const timeInHours = Math.floor(hours);
-    const minutes = (hours - timeInHours) * 60;
-    const timeInMinutes = Math.round(minutes);
-
-    let servingTime;
-
-    if (timeInHours === 0 && timeInMinutes > 0) {
-      servingTime = `⏲️ ready in: ${timeInMinutes} mins`;
-    } else if (timeInMinutes === 0 && timeInHours > 0) {
-      servingTime = `⏲️ ready in: ${timeInHours} hours`;
-    } else if (timeInHours > 0 && timeInMinutes > 0) {
-      servingTime = `⏲️ ready in: ${timeInHours} hours and ${timeInMinutes} mins`;
-    } else {
-      servingTime = null;
-    }
-
-    return servingTime;
-  };
-
-  const formatUsedIngredients = (usedIngredient) => {
-    let formattedIngredient;
-    if (usedIngredient > 1) {
-      formattedIngredient = `🍳used ingredient: ${usedIngredient} items`;
-    } else if (usedIngredient === 1) {
-      formattedIngredient = `🍳used ingredient: ${usedIngredient} item`;
-    } else {
-      formattedIngredient = null;
-    }
-    return formattedIngredient;
-  };
 
   return (
     <div
