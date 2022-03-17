@@ -40,7 +40,16 @@
 
 # 🟢 Steps
 
-- We are just finishing the project and will update this once finished! 
+### `git clone https://github.com/CodeNameAshley/recipe-app-project`
+- Clone the repository from our github page. 
+### `npm i`
+- Run npm i to install all dependencies and dev dependencies from the package.json
+- Obtain an free API key from Spoonacular. All you need is an email address
+- Create a .env in src folder and put `REACT_APP_API_KEY='enter your api key here'`
+### `npm start`
+- To start the app, type npm start in terminal, and wait for react app to load in localhost:3000
+
+**Don't forget to keep an eye on your API calls, a free account only allows 150 hits, a request is = 1hit, each recipe returned is 0.001.**
 
 # 👨‍💻 Tech stack
 
@@ -48,6 +57,11 @@ Here's a brief high-level overview of the tech stack the foodle app uses:
 
 - JavaScript
 - React.js
+- Node.js
+- Postman
+- Axios
+- BootStrap
+- .env
 - CSS
 - SASS
 
@@ -67,7 +81,7 @@ Thank you for checking this repo, once the project is finished we will let you k
 
 # ⚠️ License
 
-foodle app is free and open-source software licensed under the GNU General Public License v3.0. All designs were created by Eriq Abonie, Khalid Nur, Ashley Lhuillier and distributed under Creative Commons license (CC BY-SA 4.0 International).
+foodle app is free and open-source software licensed under the GNU General Public License v3.0. All designs were created by Eriq Abonie, Khalid Nur, Ashley Lhuillier Navo and distributed under Creative Commons license (CC BY-SA 4.0 International).
 
 <br />
 
