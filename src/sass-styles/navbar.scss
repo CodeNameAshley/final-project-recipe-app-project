@@ -4,28 +4,29 @@
 
 
 .navBar__main {
-    text-align: center;
-    justify-content: center;
-    width: 100%;
-    height: 79px;
     background-color: $secondary-background-colour;
-    display: inline-flex;
-    margin: auto;
-    font-family: $palanquin-dark;
     border-bottom: solid 5px $secondary-font-colour;
+    display: inline-flex;
+    font-family: $palanquin-dark;
+    height: 79px;
+    justify-content: center;
+    margin: auto;
+    text-align: center;
+    width: 100%;
         img{
-            padding-top: 2.5px;
             max-width: 200px;
             max-height: 100px;
+            padding-top: 2.5px;
         }
         .back{
             left: 10px;
-            top: 13px;
-            position: absolute;
             max-height:50px;
             min-height: 50px;
+            position: absolute;
+            top: 13px;
             vertical-align: baseline;
         }
+
 }
 
 // .navBar__foodle{

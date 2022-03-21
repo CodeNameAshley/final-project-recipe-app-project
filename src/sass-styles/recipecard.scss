@@ -59,8 +59,11 @@
         max-width: 330px;
     
         z-index: 999;
+        @media screen and (max-width: $tablet-screen-size) {
+            font-size: 1.25em;
+        }
         @media screen and (max-width: $phone-screen-size) {
-            font-size: 18px;
+            font-size: 1.15em;
         }
     }
     
