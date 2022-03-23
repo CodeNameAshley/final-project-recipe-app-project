@@ -44,7 +44,7 @@
 - Clone the repository from our github page. 
 ### `npm i`
 - Run npm i to install all dependencies and dev dependencies from the package.json
-- Obtain an free API key from Spoonacular. All you need is an email address
+- Obtain a free API key from Spoonacular. All you need is an email address to get the key!
 - Create a .env in src folder and put `REACT_APP_API_KEY='enter your api key here'`
 ### `npm start`
 - To start the app, type npm start in terminal, and wait for react app to load in localhost:3000
