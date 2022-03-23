@@ -49,7 +49,7 @@
 ### `npm start`
 - To start the app, type npm start in terminal, and wait for react app to load in localhost:3000
 
-**Don't forget to keep an eye on your API calls, a free account only allows 150 hits, a request is = 1hit, each recipe returned is 0.001.**
+**Don't forget to keep an eye on your API calls, a free account only allows 150 hits, 1 random request (reloading landing page) = 1 hit, searching recipes by ingredients = 1 hit, each recipe returned is 0.001.**
 
 # 👨‍💻 Tech stack
 
