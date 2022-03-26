@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
-// import * as from "bootstrap/dist/css/bootstrap.min.css";
-import axios from "axios";
 import "../styles/App.scss";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+// import * as from "bootstrap/dist/css/bootstrap.min.css";
+import axios from "axios";
 import SearchBar from "./SearchBar";
 import SearchResults from "./SearchResults";
 import RecipeInfo from "./RecipeInfo";
 import NavBar from "./NavBar";
 import ReplacementImage from "../images/replacement-image.png";
+import FoodleProfile from "./FoodleProfile";
+import LogIn from "./LogIn"
 
 function App() {
   const [searchResults, setSearchResults] = useState(null);
@@ -51,36 +53,40 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
-      <Router>
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <>
-                <NavBar />
-                <SearchBar setSearchResults={setSearchResults} />
-                {searchResults ? (
-                  <SearchResults
-                    results={searchResults}
-                    selectRecipe={setSelectedRecipe}
-                  />
-                ) : (
-                  <SearchResults
-                    results={randomRecipe}
-                    selectRecipe={setSelectedRecipe}
-                  />
-                )}
-              </>
-            }
-          />
-          <Route
-            path="/recipeinfo"
-            element={<RecipeInfo result={selectedRecipe} />}
-          />
-        </Routes>
-      </Router>
-    </div>
+    
+      <div className="App">
+        <Router>
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <>
+                  <NavBar />
+                  <SearchBar setSearchResults={setSearchResults} />
+                  {searchResults ? (
+                    <SearchResults
+                      results={searchResults}
+                      selectRecipe={setSelectedRecipe}
+                    />
+                  ) : (
+                    <SearchResults
+                      results={randomRecipe}
+                      selectRecipe={setSelectedRecipe}
+                    />
+                  )}
+                </>
+              }
+            />
+            <Route
+              path="/recipeinfo"
+              element={<RecipeInfo result={selectedRecipe} />}
+            />
+            <Route exact path="/foodleprofile" component={FoodleProfile}/>
+            <Route exact path="/login" component={LogIn} />
+          </Routes>
+        </Router>
+      </div>
+  
   );
 }
 
