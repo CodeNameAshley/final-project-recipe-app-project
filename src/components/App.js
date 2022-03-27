@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from "react";
-// import * as from "bootstrap/dist/css/bootstrap.min.css";
-import axios from "axios";
 import "../styles/App.scss";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+// import * as from "bootstrap/dist/css/bootstrap.min.css";
+import axios from "axios";
 import SearchBar from "./SearchBar";
 import SearchResults from "./SearchResults";
 import RecipeInfo from "./RecipeInfo";
 import NavBar from "./NavBar";
 import ReplacementImage from "../images/replacement-image.png";
+import FoodleProfile from "./FoodleProfile";
+import LogIn from "./LogIn";
+import SignUp from "./SignUp";
 
 function App() {
   const [searchResults, setSearchResults] = useState(null);
@@ -20,11 +23,13 @@ function App() {
 
   const [randomRecipe, setRandomRecipe] = useState([]);
 
+  const key = process.env.REACT_APP_MY_API_KEY;
+
   useEffect(async () => {
     try {
       axios
         .get(
-          `https://api.spoonacular.com/recipes/random?number=6&apiKey=${process.env.REACT_APP_API_KEY}`
+          `https://api.spoonacular.com/recipes/random?number=6&apiKey=${key}`
         )
         .then((response) => {
           const randomResults = response.data.recipes.map((recipe) => {
@@ -78,6 +83,9 @@ function App() {
             path="/recipeinfo"
             element={<RecipeInfo result={selectedRecipe} />}
           />
+          <Route exact path="/foodleprofile" element={<FoodleProfile />} />
+          <Route exact path="/login" element={<LogIn />} />
+          <Route exact path="/signup" element={<SignUp />} />
         </Routes>
       </Router>
     </div>

@@ -23,6 +23,7 @@
         "react"
     ],
     "rules": {
+        "linebreak-style": ["error", "windows"],
         "arrow-body-style": ["error", "always"],
         "react/jsx-one-expression-per-line": [0],
         "no-bitwise": ["error", { "int32Hint": true }],
@@ -47,5 +48,7 @@
                 "extensions": [".js", ".jsx"]
             }
         ]
-    }
+    },
+    "root": true
+    
 }

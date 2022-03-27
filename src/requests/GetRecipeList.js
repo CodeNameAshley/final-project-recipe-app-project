@@ -9,7 +9,7 @@ export default async function GetRecipeList(ingredients) {
       .get(
         `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${ingredients.join(
           ",+"
-        )}&ranking=2&number=30&apiKey=${process.env.REACT_APP_API_KEY}`
+        )}&ranking=2&number=30&apiKey=${process.env.REACT_APP_MY_API_KEY}`
       )
       .then((response) => {
         const recipeResults = response.data.filter((recipe) => {
