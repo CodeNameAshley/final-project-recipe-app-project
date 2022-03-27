@@ -15,7 +15,6 @@ function LogIn() {
 
   return (
     <div>
-
       <form onSubmit={submitHandler}>
         <input type="text" name="email" value={data.email} onChange={handler} />
         <input type="password" name="password" value={data.password} onChange={handler} />

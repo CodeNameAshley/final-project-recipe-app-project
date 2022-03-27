@@ -7,12 +7,12 @@ import "firebase/auth";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyAZwMnL9rPp1bapF5k9-lubPjEXrxEWhWo",
-  authDomain: "recipe-app-auth.firebaseapp.com",
-  projectId: "recipe-app-auth",
-  storageBucket: "recipe-app-auth.appspot.com",
-  messagingSenderId: "328803415106",
-  appId: "1:328803415106:web:e2777c209635c0e66329db"
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECTID,
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_FIREBASE_APPID
 };
 
 // Initialize Firebase

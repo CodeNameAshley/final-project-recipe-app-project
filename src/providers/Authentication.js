@@ -1,6 +1,5 @@
 /* eslint-disable import/no-named-as-default */
 import React, { createContext, useContext, useEffect, useState } from "react";
-import PropTypes, { bool } from "prop-types";
 import { auth } from "../firebase";
 
 // auth.createUserWithEmailAndPassword
@@ -39,7 +38,7 @@ function AuthenticationProvider({ children }) {
   }, []);
 
   const value = {
-    isAuthenticated: false,
+    // isAuthenticated: false,
     currentUser,
     signUp,
     login,
