@@ -48,5 +48,7 @@
                 "extensions": [".js", ".jsx"]
             }
         ]
-    }
+    },
+    "root": true
+    
 }

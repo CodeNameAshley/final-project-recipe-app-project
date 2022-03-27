@@ -32,7 +32,7 @@ export default function RecipeCard({
   vegan,
   vegetarian,
 }) {
-  const recipeURL = `https://api.spoonacular.com/recipes/${id}/information?includeNutrition=false&includeInstructions=true&apiKey=${process.env.REACT_APP_API_KEY}`;
+  const recipeURL = `https://api.spoonacular.com/recipes/${id}/information?includeNutrition=false&includeInstructions=true&apiKey=${process.env.REACT_APP_MY_API_KEY}`;
 
   const handleClick = async (event) => {
     event.preventDefault();

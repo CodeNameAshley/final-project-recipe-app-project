@@ -9,7 +9,8 @@ import RecipeInfo from "./RecipeInfo";
 import NavBar from "./NavBar";
 import ReplacementImage from "../images/replacement-image.png";
 import FoodleProfile from "./FoodleProfile";
-import LogIn from "./LogIn"
+import LogIn from "./LogIn";
+import SignUp from "./SignUp";
 
 function App() {
   const [searchResults, setSearchResults] = useState(null);
@@ -22,11 +23,13 @@ function App() {
 
   const [randomRecipe, setRandomRecipe] = useState([]);
 
+  const key = process.env.REACT_APP_MY_API_KEY;
+
   useEffect(async () => {
     try {
       axios
         .get(
-          `https://api.spoonacular.com/recipes/random?number=6&apiKey=${process.env.REACT_APP_API_KEY}`
+          `https://api.spoonacular.com/recipes/random?number=6&apiKey=${key}`
         )
         .then((response) => {
           const randomResults = response.data.recipes.map((recipe) => {
@@ -53,40 +56,39 @@ function App() {
   }, []);
 
   return (
-    
-      <div className="App">
-        <Router>
-          <Routes>
-            <Route
-              path="/"
-              element={
-                <>
-                  <NavBar />
-                  <SearchBar setSearchResults={setSearchResults} />
-                  {searchResults ? (
-                    <SearchResults
-                      results={searchResults}
-                      selectRecipe={setSelectedRecipe}
-                    />
-                  ) : (
-                    <SearchResults
-                      results={randomRecipe}
-                      selectRecipe={setSelectedRecipe}
-                    />
-                  )}
-                </>
-              }
-            />
-            <Route
-              path="/recipeinfo"
-              element={<RecipeInfo result={selectedRecipe} />}
-            />
-            <Route exact path="/foodleprofile" component={FoodleProfile}/>
-            <Route exact path="/login" component={LogIn} />
-          </Routes>
-        </Router>
-      </div>
-  
+    <div className="App">
+      <Router>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <>
+                <NavBar />
+                <SearchBar setSearchResults={setSearchResults} />
+                {searchResults ? (
+                  <SearchResults
+                    results={searchResults}
+                    selectRecipe={setSelectedRecipe}
+                  />
+                ) : (
+                  <SearchResults
+                    results={randomRecipe}
+                    selectRecipe={setSelectedRecipe}
+                  />
+                )}
+              </>
+            }
+          />
+          <Route
+            path="/recipeinfo"
+            element={<RecipeInfo result={selectedRecipe} />}
+          />
+          <Route exact path="/foodleprofile" element={<FoodleProfile />} />
+          <Route exact path="/login" element={<LogIn />} />
+          <Route exact path="/signup" element={<SignUp />} />
+        </Routes>
+      </Router>
+    </div>
   );
 }
 

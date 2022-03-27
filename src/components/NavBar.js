@@ -6,7 +6,7 @@ import backButton from "../images/back-button.png";
 import { useAuthentication } from "../providers/Authentication";
 
 export default function NavBar() {
-  const value = useAuthentication()
+  const { isAuthenticated } = useAuthentication();
   return (
     <div className="navBar__main">
       <Link to="/" onClick={window.scrollTo(0, 0)}>
@@ -15,11 +15,13 @@ export default function NavBar() {
       <Link to="/" onClick={window.scrollTo(0, 0)}>
         <img src={logo} alt="foodle logo" />
       </Link>
-      {value.isAuthenticated ? <Link to="/foodleprofile" onClick={window.scrollTo(0,0)}>
-        <img src={backButton} className="foodle-profile" alt="foodle profile button"/>
-      </Link> : <Link to="/login" onClick={window.scrollTo(0,0)}>
-        <img src={backButton} className="login-page" alt="login page button"/>
-      </Link>}
+      {isAuthenticated ?
+        <Link to="/foodleprofile" onClick={window.scrollTo(0, 0)}>
+          <img src={backButton} className="foodle-profile" alt="foodle profile button" />
+        </Link> :
+        <Link to="/login" onClick={window.scrollTo(0, 0)}>
+          <img src={backButton} className="login-page" alt="login page button" />
+        </Link>}
     </div>
   );
 }
