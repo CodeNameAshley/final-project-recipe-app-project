@@ -2,9 +2,7 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { auth } from "../firebase";
 
-// auth.createUserWithEmailAndPassword
-
-const AuthenticationContext = createContext();
+export const AuthenticationContext = createContext();
 
 export const useAuthentication = () => { return useContext(AuthenticationContext); };
 
@@ -38,7 +36,6 @@ function AuthenticationProvider({ children }) {
   }, []);
 
   const value = {
-    // isAuthenticated: false,
     currentUser,
     signUp,
     login,
@@ -48,7 +45,7 @@ function AuthenticationProvider({ children }) {
 
   return (
     <AuthenticationContext.Provider value={value}>
-      {children}
+      {!loading && children}
     </AuthenticationContext.Provider>
   );
 }

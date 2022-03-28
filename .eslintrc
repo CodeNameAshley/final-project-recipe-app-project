@@ -1,54 +1,54 @@
 {
-    "env": {
-        "browser": true,
-        "es2022": true,
-        "jest": true
+  "env": {
+    "browser": true,
+    "es2022": true,
+    "jest": true
+  },
+  "extends": ["plugin:react/recommended", "airbnb"],
+  "globals": {
+    "Atomics": "readonly",
+    "SharedArrayBuffer": "readonly"
+  },
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
     },
-    "extends": [
-        "plugin:react/recommended",
-        "airbnb"
+    "ecmaVersion": 2018,
+    "sourceType": "module"
+  },
+  "plugins": ["react"],
+  "rules": {
+    "linebreak-style": ["error", "windows"],
+    "arrow-body-style": ["error", "always"],
+    "react/jsx-one-expression-per-line": [0],
+    "no-bitwise": ["error", { "int32Hint": true }],
+    "treatUndefinedAsUnspecified": [0],
+    "no-unused-expressions": [
+      "error",
+      { "allowShortCircuit": true, "allowTernary": true }
     ],
-    "globals": {
-        "Atomics": "readonly",
-        "SharedArrayBuffer": "readonly"
-    },
-    "parserOptions": {
-        "ecmaFeatures": {
-            "jsx": true
-        },
-        "ecmaVersion": 2018,
-        "sourceType": "module"
-    },
-    "plugins": [
-        "react"
+    "allowImplicit": [0],
+    "no-sequences": ["error", { "allowInParentheses": false }],
+    "operator-linebreak": [0],
+    "comma-dangle": ["error", "only-multiline"],
+    "object-curly-newline": [
+      "error",
+      {
+        "ObjectExpression": "always",
+        "ObjectPattern": { "multiline": true },
+        "ImportDeclaration": "never"
+      }
     ],
-    "rules": {
-        "linebreak-style": ["error", "windows"],
-        "arrow-body-style": ["error", "always"],
-        "react/jsx-one-expression-per-line": [0],
-        "no-bitwise": ["error", { "int32Hint": true }],
-        "treatUndefinedAsUnspecified": [0],
-        "no-unused-expressions": ["error", { "allowShortCircuit": true, "allowTernary": true }],
-        "allowImplicit": [0],
-        "no-sequences": ["error", { "allowInParentheses": false }],
-        "operator-linebreak": [0],
-        "comma-dangle": ["error", "only-multiline"],
-        "object-curly-newline": ["error", {
-            "ObjectExpression": "always",
-            "ObjectPattern": { "multiline": true },
-            "ImportDeclaration": "never"
-        }],
-        "react/jsx-wrap-multilines": [0],
-        "quotes": [2, "double", { "avoidEscape": true }],
-        "no-underscore-dangle": [0],
-        "react/jsx-props-no-spreading": [0],
-        "react/jsx-filename-extension": [
-            1,
-            {
-                "extensions": [".js", ".jsx"]
-            }
-        ]
-    },
-    "root": true
-    
+    "react/jsx-wrap-multilines": [0],
+    "quotes": [2, "double", { "avoidEscape": true }],
+    "no-underscore-dangle": [0],
+    "react/jsx-props-no-spreading": [0],
+    "react/jsx-filename-extension": [
+      1,
+      {
+        "extensions": [".js", ".jsx"]
+      }
+    ]
+  },
+  "root": true
 }
