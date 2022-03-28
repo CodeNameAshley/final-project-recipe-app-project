@@ -1,6 +1,7 @@
+/* eslint-disable */
 import React, { useState, useEffect } from "react";
 import "../styles/App.scss";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 // import * as from "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 import SearchBar from "./SearchBar";
@@ -9,8 +10,11 @@ import RecipeInfo from "./RecipeInfo";
 import NavBar from "./NavBar";
 import ReplacementImage from "../images/replacement-image.png";
 import FoodleProfile from "./FoodleProfile";
-import LogIn from "./LogIn";
 import SignUp from "./SignUp";
+import LogIn from "./LogIn";
+import LogOut from "./LogOut";
+import RequireAuth from "./RequireAuth";
+// import PrivateRoute from "./PrivateRoute";
 
 function App() {
   const [searchResults, setSearchResults] = useState(null);
@@ -77,15 +81,27 @@ function App() {
                   />
                 )}
               </>
-            }
+              }
           />
           <Route
             path="/recipeinfo"
             element={<RecipeInfo result={selectedRecipe} />}
           />
-          <Route exact path="/foodleprofile" element={<FoodleProfile />} />
-          <Route exact path="/login" element={<LogIn />} />
+          <Route exact path="/logout" element={<LogOut />} />
+          <Route element={<RequireAuth />}>
+            <Route exact path="/foodleprofile" element={<FoodleProfile />} />
+          </Route>
+
+          {/* <Route
+            path="*"
+            element={(<PrivateRoute>
+              <Routes>
+                <Route path="/" element={<FoodleProfile />} />
+              </Routes>
+                      </PrivateRoute>)}
+          /> */}
           <Route exact path="/signup" element={<SignUp />} />
+          <Route exact path="/login" element={<LogIn />} />
         </Routes>
       </Router>
     </div>

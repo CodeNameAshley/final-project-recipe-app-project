@@ -15,12 +15,15 @@ export default function NavBar() {
       <Link to="/" onClick={window.scrollTo(0, 0)}>
         <img src={logo} alt="foodle logo" />
       </Link>
+      {currentUser ? <Link to="/logout" onClick={window.scrollTo(0, 0)}>
+        <p>log out</p>
+      </Link> : null }
       {currentUser ?
         <Link to="/foodleprofile" onClick={window.scrollTo(0, 0)}>
-          <img src={backButton} className="foodle-profile" alt="foodle profile button" />
+          <p>profile</p>
         </Link> :
         <Link to="/login" onClick={window.scrollTo(0, 0)}>
-          <img src={backButton} className="login-page" alt="login page button" />
+          <p>login</p>
         </Link>}
     </div>
   );

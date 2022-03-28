@@ -1,10 +1,14 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useForm } from "../hooks/useForm";
+// import { useAuthentication } from "../providers/Authentication";
 import { useAuthentication } from "../providers/Authentication";
 
 function SignUp() {
   const { signUp } = useAuthentication();
   const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
   const [data, handler, resetForm] = useForm({
     email: "",
     password: "",
@@ -14,15 +18,17 @@ function SignUp() {
   const submitHandler = (event) => {
     event.preventDefault();
     if (data.email && data.password &&
-       data.password === data.passwordConfirmation &&
-      data.password.length >= 6) {
+       data.password === data.passwordConfirmation) {
       signUp(data.email, data.password)
         .then((response) => {
           console.log(response);
           setError(false);
+          setLoading(true);
+          navigate("/foodleprofile");
           resetForm();
-        }).catch((error) => {
-          console.log(error);
+        }).catch((e) => {
+          console.log(e);
+          setLoading(false);
           setError(true);
         });
     } else {
@@ -32,11 +38,11 @@ function SignUp() {
 
   return (
     <form onSubmit={submitHandler}>
-      {error && <p>Something went wrong, check your credentials again</p>}
+      {error && <p>{JSON.stringify(error.message)}</p>}
       <input type="text" name="email" placeholder="email" value={data.email} onChange={handler} />
       <input type="password" name="password" placeholder="password" value={data.password} onChange={handler} />
       <input type="password" name="passwordConfirmation" placeholder="confirm password" value={data.passwordConfirmation} onChange={handler} />
-      <button type="submit">sign up</button>
+      <button disabled={loading} type="submit">sign up</button>
     </form>
   );
 }
