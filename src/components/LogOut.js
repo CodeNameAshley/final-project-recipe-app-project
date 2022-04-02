@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuthentication } from "../providers/Authentication";
+import NavBar from "./NavBar";
 
 export default function FoodleProfile() {
   const [error, setError] = useState(false);
@@ -20,6 +21,7 @@ export default function FoodleProfile() {
 
   return (
     <div>
+      <NavBar />
       {error && <p>your account can't be logged out!</p>}
       <button onClick={handleLogout}>log out</button>
     </div>

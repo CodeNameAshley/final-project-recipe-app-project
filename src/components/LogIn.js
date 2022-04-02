@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "../hooks/useForm";
 import { useAuthentication } from "../providers/Authentication";
+import NavBar from "./NavBar";
 
 function LogIn() {
   const { login } = useAuthentication();
@@ -35,6 +36,7 @@ function LogIn() {
 
   return (
     <div>
+      <NavBar />
       <h1>Log In</h1>
       {error && <p>something went wrong</p>}
       <form onSubmit={submitHandler}>

@@ -8,7 +8,7 @@ export default function SearchResults({ results, selectRecipe }) {
   const headerMessage = "🌟check out these recipes below!🌟";
   const randomHeaderMessage = "✨fancy trying something new?✨";
   const noResultsMessage = "Oh no there are no recipes in our cookbook!";
-  console.log(process.env.REACT_APP_API_KEY);
+
 
   return (
     <div className="search-results__main">

@@ -7,6 +7,7 @@ import { useAuthentication } from "../providers/Authentication";
 
 export default function NavBar() {
   const { currentUser } = useAuthentication();
+
   return (
     <div className="navBar__main">
       <Link to="/" onClick={window.scrollTo(0, 0)}>

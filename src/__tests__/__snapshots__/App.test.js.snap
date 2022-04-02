@@ -1,0 +1,96 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should take a snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="App"
+  >
+    <div
+      class="navBar__main"
+    >
+      <a
+        href="/"
+      >
+        <img
+          alt="back button"
+          class="back"
+          src="back-button.png"
+        />
+      </a>
+      <a
+        href="/"
+      >
+        <img
+          alt="foodle logo"
+          src="foodle-logo.png"
+        />
+      </a>
+      <a
+        href="/login"
+      >
+        <p>
+          login
+        </p>
+      </a>
+    </div>
+    <div
+      class="search-bar__main"
+    >
+      <div
+        class="search-chip-div"
+      >
+        <div
+          class="chip__main"
+        >
+          <div
+            class="chip-and-button"
+          />
+        </div>
+        <form
+          class="search-form"
+        >
+          <div
+            class="search-bar__form-addButton"
+          >
+            <input
+              class="search-input"
+              id="inputField"
+              placeholder="type your ingredients to find recipes"
+              type="text"
+              value=""
+            />
+            <button
+              class="search-bar__add"
+              type="button"
+            >
+              Add
+            </button>
+          </div>
+          <button
+            class="searchButton__disabled"
+            type="submit"
+          >
+            Search
+          </button>
+        </form>
+      </div>
+    </div>
+    <div
+      class="search-results__main"
+    >
+      <header
+        class="search-results__header"
+      >
+        ✨fancy trying something new?✨
+      </header>
+      <div
+        class="search-results__card"
+      >
+        <p>
+          Oh no there are no recipes in our cookbook!
+        </p>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

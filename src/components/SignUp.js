@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useForm } from "../hooks/useForm";
 // import { useAuthentication } from "../providers/Authentication";
 import { useAuthentication } from "../providers/Authentication";
+import NavBar from "./NavBar";
 
 function SignUp() {
   const { signUp } = useAuthentication();
@@ -37,13 +38,16 @@ function SignUp() {
   };
 
   return (
-    <form onSubmit={submitHandler}>
-      {error && <p>{JSON.stringify(error.message)}</p>}
-      <input type="text" name="email" placeholder="email" value={data.email} onChange={handler} />
-      <input type="password" name="password" placeholder="password" value={data.password} onChange={handler} />
-      <input type="password" name="passwordConfirmation" placeholder="confirm password" value={data.passwordConfirmation} onChange={handler} />
-      <button disabled={loading} type="submit">sign up</button>
-    </form>
+    <div>
+      <NavBar />
+      <form onSubmit={submitHandler}>
+        {error && <p>{JSON.stringify(error.message)}</p>}
+        <input type="text" name="email" placeholder="email" value={data.email} onChange={handler} />
+        <input type="password" name="password" placeholder="password" value={data.password} onChange={handler} />
+        <input type="password" name="passwordConfirmation" placeholder="confirm password" value={data.passwordConfirmation} onChange={handler} />
+        <button disabled={loading} type="submit">sign up</button>
+      </form>
+    </div>
   );
 }
 
